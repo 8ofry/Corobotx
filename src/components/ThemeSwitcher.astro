@@ -1,0 +1,111 @@
+---
+// Theme switcher — Orange (default) or Violet.
+// Initial theme is applied by the inline script in Layout.astro BEFORE first paint.
+---
+
+<div class="relative" id="theme-switcher-root">
+  <button
+    id="theme-switcher-btn"
+    type="button"
+    class="flex items-center gap-2 px-3 h-9 border border-chrome-border text-slate-300 hover:text-white hover:border-brand-orange transition-colors"
+    aria-label="Switch theme"
+    aria-haspopup="true"
+    aria-expanded="false"
+    style="border-radius: 0.375rem;"
+  >
+    <span class="w-3 h-3 rounded-full" data-theme-swatch style="background-color: rgb(var(--c-primary-container));"></span>
+    <span class="hidden md:inline label-caps" data-theme-label>Orange</span>
+    <span class="material-symbols-outlined text-[16px] opacity-70">unfold_more</span>
+  </button>
+
+  <div
+    id="theme-switcher-menu"
+    class="hidden absolute right-0 top-full mt-1 w-44 bg-chrome-bg border border-chrome-border shadow-2xl z-50"
+    role="menu"
+    style="border-radius: 0.375rem;"
+  >
+    <button
+      class="theme-option w-full flex items-center gap-3 px-4 py-2.5 text-sm text-slate-300 hover:bg-chrome-surface hover:text-brand-orange transition-colors"
+      data-theme-option="orange"
+      role="menuitem"
+    >
+      <span class="w-3 h-3 rounded-full" style="background-color: #FF4D00;"></span>
+      <span class="label-caps">Orange</span>
+      <span class="material-symbols-outlined text-brand-orange text-[16px] ml-auto hidden" data-theme-check>check</span>
+    </button>
+    <button
+      class="theme-option w-full flex items-center gap-3 px-4 py-2.5 text-sm text-slate-300 hover:bg-chrome-surface hover:text-brand-orange transition-colors"
+      data-theme-option="violet"
+      role="menuitem"
+    >
+      <span class="w-3 h-3 rounded-full" style="background-color: #8B5CF6;"></span>
+      <span class="label-caps">Violet</span>
+      <span class="material-symbols-outlined text-brand-orange text-[16px] ml-auto hidden" data-theme-check>check</span>
+    </button>
+  </div>
+</div>
+
+<script is:inline>
+  (() => {
+    const LS_KEY = 'corobotx-theme';
+    const VALID = ['orange', 'violet'];
+    const LABELS = { orange: 'Orange', violet: 'Violet' };
+
+    const btn = document.getElementById('theme-switcher-btn');
+    const menu = document.getElementById('theme-switcher-menu');
+    if (!btn || !menu) return;
+
+    const labelEl = btn.querySelector('[data-theme-label]');
+
+    const applyTheme = theme => {
+      if (!VALID.includes(theme)) theme = 'orange';
+      document.documentElement.setAttribute('data-theme', theme);
+      try { localStorage.setItem(LS_KEY, theme); } catch (e) {}
+      if (labelEl) labelEl.textContent = LABELS[theme];
+      document.querySelectorAll('.theme-option').forEach(opt => {
+        const isActive = opt.getAttribute('data-theme-option') === theme;
+        const check = opt.querySelector('[data-theme-check]');
+        if (check) check.classList.toggle('hidden', !isActive);
+      });
+      document.querySelectorAll('[data-brand-logo]').forEach(img => {
+        img.src = theme === 'violet'
+          ? '/images/brand/corobotx-logo-violet.png'
+          : '/images/brand/corobotx-logo.png';
+      });
+    };
+
+    const current = document.documentElement.getAttribute('data-theme') || 'orange';
+    applyTheme(current);
+
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      const isOpen = !menu.classList.contains('hidden');
+      menu.classList.toggle('hidden');
+      btn.setAttribute('aria-expanded', String(!isOpen));
+    });
+
+    document.querySelectorAll('.theme-option').forEach(opt => {
+      opt.addEventListener('click', e => {
+        e.stopPropagation();
+        const theme = opt.getAttribute('data-theme-option');
+        if (theme) applyTheme(theme);
+        menu.classList.add('hidden');
+        btn.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    document.addEventListener('click', e => {
+      if (!menu.contains(e.target) && !btn.contains(e.target)) {
+        menu.classList.add('hidden');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        menu.classList.add('hidden');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  })();
+</script>

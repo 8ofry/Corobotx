@@ -1,0 +1,144 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="w-full bg-chrome-surface border-t-4 border-brand-orange mt-auto">
+  <div
+    class="max-w-[1600px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-10 px-6 md:px-10 py-16"
+  >
+    <div class="md:col-span-4 flex flex-col gap-4">
+      <a href="/" class="inline-block self-start hover:opacity-90 transition-opacity" aria-label="CorobotX — Home">
+        <img
+          data-brand-logo
+          src="/images/brand/corobotx-logo.png"
+          alt="CorobotX"
+          width="220"
+          height="54"
+          class="h-11 w-auto"
+          loading="lazy"
+          decoding="async"
+        />
+      </a>
+      <p class="font-sans text-sm text-slate-400 leading-relaxed max-w-sm">
+        Precision engineered industrial automation. Designing resilient, energy-optimized robotics
+        and smart facility systems for the MENA region and beyond.
+      </p>
+      <div class="flex items-center gap-2 font-sans text-[10px] tracking-widest uppercase text-slate-500 mt-2">
+        <span class="w-1.5 h-1.5 bg-brand-orange animate-pulse"></span>
+        <span>Systems Nominal</span>
+      </div>
+    </div>
+
+    <div class="md:col-span-2 flex flex-col gap-3">
+      <span class="font-sans text-white font-bold tracking-widest text-xs mb-2 uppercase">
+        Platform
+      </span>
+      <a
+        href="/solutions"
+        class="font-sans text-xs tracking-widest uppercase text-slate-500 hover:text-brand-orange transition-colors"
+      >
+        Solutions
+      </a>
+      <a
+        href="/partners"
+        class="font-sans text-xs tracking-widest uppercase text-slate-500 hover:text-brand-orange transition-colors"
+      >
+        Partners
+      </a>
+      <a
+        href="/partners#industries"
+        class="font-sans text-xs tracking-widest uppercase text-slate-500 hover:text-brand-orange transition-colors"
+      >
+        Industries
+      </a>
+    </div>
+
+    <div class="md:col-span-2 flex flex-col gap-3">
+      <span class="font-sans text-white font-bold tracking-widest text-xs mb-2 uppercase">
+        Company
+      </span>
+      <a
+        href="/about"
+        class="font-sans text-xs tracking-widest uppercase text-slate-500 hover:text-brand-orange transition-colors"
+      >
+        About Us
+      </a>
+      <a
+        href="/about#contact"
+        class="font-sans text-xs tracking-widest uppercase text-slate-500 hover:text-brand-orange transition-colors"
+      >
+        Contact
+      </a>
+      <a
+        href="/about#methodology"
+        class="font-sans text-xs tracking-widest uppercase text-slate-500 hover:text-brand-orange transition-colors"
+      >
+        Methodology
+      </a>
+    </div>
+
+    <div class="md:col-span-4 flex flex-col gap-3">
+      <span class="font-sans text-white font-bold tracking-widest text-xs mb-2 uppercase">
+        Contact
+      </span>
+      <a
+        href="mailto:info@corobotx.com"
+        class="font-sans text-sm text-slate-400 hover:text-brand-orange transition-colors flex items-center gap-2"
+      >
+        <span class="material-symbols-outlined text-base">mail</span>
+        info@corobotx.com
+      </a>
+      <div class="font-sans text-sm text-slate-400 flex items-center gap-2">
+        <span class="material-symbols-outlined text-base">location_on</span>
+        Egypt · MENA Region
+      </div>
+      <div class="mt-2">
+        <div class="font-sans text-[10px] tracking-widest uppercase text-slate-500 mb-2">
+          Authorized Partners
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="bg-white h-10 w-20 flex items-center justify-center border border-chrome-border hover:border-brand-orange transition-colors">
+            <img
+              src="/images/partners/shibaura.jpg"
+              alt="Shibaura Machine"
+              loading="lazy"
+              class="h-6 w-auto object-contain"
+            />
+          </div>
+          <div class="bg-white h-10 w-20 flex items-center justify-center border border-chrome-border hover:border-brand-orange transition-colors">
+            <img
+              src="/images/partners/otc-daihen.png"
+              alt="OTC DAIHEN"
+              loading="lazy"
+              class="h-6 w-auto object-contain"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="border-t border-chrome-border">
+    <div
+      class="max-w-[1600px] mx-auto px-6 md:px-10 py-6 flex flex-col md:flex-row justify-between items-center gap-4"
+    >
+      <p class="font-sans text-[10px] tracking-widest uppercase text-slate-500 text-center md:text-left">
+        © {year} CorobotX Industrial Automation. Precision Engineered.
+      </p>
+      <div class="flex items-center gap-6">
+        <a
+          href="/privacy"
+          class="font-sans text-[10px] tracking-widest uppercase text-slate-500 hover:text-brand-orange transition-colors"
+        >
+          Privacy
+        </a>
+        <a
+          href="/terms"
+          class="font-sans text-[10px] tracking-widest uppercase text-slate-500 hover:text-brand-orange transition-colors"
+        >
+          Terms
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>

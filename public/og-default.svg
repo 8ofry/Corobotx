@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF4D00;stop-opacity:0.15"/>
+      <stop offset="100%" style="stop-color:#00D2FD;stop-opacity:0.08"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#0A0E1A"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <g transform="translate(80, 80)">
+    <rect x="0" y="0" width="48" height="48" fill="none" stroke="#FF4D00" stroke-width="3"/>
+    <circle cx="24" cy="24" r="8" fill="none" stroke="#FF4D00" stroke-width="2"/>
+    <circle cx="24" cy="24" r="2" fill="#FF4D00"/>
+  </g>
+  <text x="148" y="115" fill="#FFFFFF" font-family="Space Grotesk, sans-serif" font-size="36" font-weight="900" letter-spacing="-1">COROBOTX</text>
+
+  <text x="80" y="320" fill="#F0DFDA" font-family="Space Grotesk, sans-serif" font-size="84" font-weight="800" letter-spacing="-2">Precision Powered</text>
+  <text x="80" y="410" fill="#FF4D00" font-family="Space Grotesk, sans-serif" font-size="84" font-weight="800" letter-spacing="-2">Automation.</text>
+
+  <text x="80" y="475" fill="#94A3B8" font-family="Space Grotesk, sans-serif" font-size="22" font-weight="500">Industrial Robotics · Automation · EMS · BMS</text>
+
+  <g transform="translate(80, 530)">
+    <rect x="0" y="0" width="260" height="50" fill="#FF4D00"/>
+    <text x="130" y="31" text-anchor="middle" fill="#FFFFFF" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="700" letter-spacing="2">REQUEST A QUOTE</text>
+  </g>
+
+  <text x="1120" y="600" text-anchor="end" fill="#64748B" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="500" letter-spacing="1">CORP.MENA // 2026</text>
+</svg>

@@ -1,0 +1,119 @@
+---
+import ThemeSwitcher from './ThemeSwitcher.astro';
+
+interface Props {
+  active?: 'home' | 'solutions' | 'partners' | 'industries' | 'about' | 'contact' | null;
+}
+
+const { active = null } = Astro.props;
+
+const items: { key: NonNullable<Props['active']>; label: string; href: string }[] = [
+  { key: 'solutions', label: 'Solutions', href: '/solutions' },
+  { key: 'partners', label: 'Partners', href: '/partners' },
+  { key: 'industries', label: 'Industries', href: '/partners#industries' },
+  { key: 'about', label: 'About', href: '/about' },
+  { key: 'contact', label: 'Contact', href: '/about#contact' },
+];
+---
+
+<header
+  class="fixed top-0 left-0 right-0 z-50 h-20 bg-chrome-bg/95 backdrop-blur-md border-b border-chrome-border"
+>
+  <div class="max-w-[1600px] mx-auto h-full flex items-center justify-between px-6 md:px-10">
+    <a
+      href="/"
+      class="group flex items-center transition-opacity duration-200 hover:opacity-90"
+      aria-label="CorobotX — Home"
+    >
+      <img
+        data-brand-logo
+        src="/images/brand/corobotx-logo.png"
+        alt="CorobotX"
+        width="180"
+        height="44"
+        class="h-9 md:h-10 w-auto transition-transform duration-300 group-hover:scale-[1.03]"
+        decoding="async"
+      />
+    </a>
+
+    <nav class="hidden lg:flex items-center h-full">
+      {items.map(item => {
+        const isActive = active === item.key;
+        return (
+          <a
+            href={item.href}
+            class:list={[
+              'font-sans font-medium uppercase tracking-wider text-[13px] h-full flex items-center px-5 transition-colors duration-200',
+              isActive
+                ? 'text-brand-orange border-b-2 border-brand-orange'
+                : 'text-slate-400 hover:text-white hover:bg-chrome-surface',
+            ]}
+          >
+            {item.label}
+          </a>
+        );
+      })}
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <ThemeSwitcher />
+      <a
+        href="/about#contact"
+        class="hidden md:inline-flex font-sans font-bold uppercase tracking-widest text-xs text-brand-orange border border-brand-orange px-5 py-2.5 hover:bg-brand-orange hover:text-white transition-colors duration-200"
+      >
+        Request Quote
+      </a>
+
+      <button
+        id="mobile-menu-toggle"
+        class="lg:hidden text-white p-2 -mr-2"
+        aria-label="Open menu"
+        aria-expanded="false"
+      >
+        <span class="material-symbols-outlined text-[28px]">menu</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div
+    id="mobile-menu"
+    class="lg:hidden hidden fixed top-20 left-0 right-0 bg-chrome-bg border-b border-chrome-border shadow-2xl"
+  >
+    <nav class="flex flex-col py-4 px-6 gap-1">
+      {items.map(item => (
+        <a
+          href={item.href}
+          class:list={[
+            'font-sans font-medium uppercase tracking-wider text-sm py-3 px-2 border-l-2 transition-colors',
+            active === item.key
+              ? 'text-brand-orange border-brand-orange bg-chrome-surface'
+              : 'text-slate-400 border-transparent hover:text-white hover:border-chrome-border',
+          ]}
+        >
+          {item.label}
+        </a>
+      ))}
+      <a
+        href="/about#contact"
+        class="mt-3 font-sans font-bold uppercase tracking-widest text-xs text-brand-orange border border-brand-orange px-5 py-3 hover:bg-brand-orange hover:text-white transition-colors text-center"
+      >
+        Request Quote
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script is:inline>
+  (() => {
+    const toggle = document.getElementById('mobile-menu-toggle');
+    const menu = document.getElementById('mobile-menu');
+    if (!toggle || !menu) return;
+    toggle.addEventListener('click', () => {
+      const isOpen = !menu.classList.contains('hidden');
+      menu.classList.toggle('hidden');
+      toggle.setAttribute('aria-expanded', String(!isOpen));
+      toggle.querySelector('.material-symbols-outlined').textContent = isOpen ? 'menu' : 'close';
+    });
+  })();
+</script>

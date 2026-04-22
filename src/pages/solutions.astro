@@ -1,0 +1,339 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+
+const roboticsModules = [
+  {
+    title: 'Automated Welding',
+    icon: 'precision_manufacturing',
+    description:
+      'Multi-axis robotic arc, spot and laser welding cells. Closed-loop seam tracking guarantees structural uniformity, zero-defect joints and dramatic spatter reduction.',
+    specs: ['MIG · TIG · Laser', 'Synchro-feed', '±0.05 mm Tracking'],
+  },
+  {
+    title: 'Palletizing · End-of-Line',
+    icon: 'conveyor_belt',
+    description:
+      'Heavy-duty payload handling with algorithmic layer-pattern generation. Optimal load stability and sustained throughput across mixed-SKU operations.',
+    specs: ['≤ 300 kg Payload', 'Mixed-SKU Patterns', '2000 PPH'],
+  },
+  {
+    title: 'Vision-Guided Pick & Place',
+    icon: 'settings_input_component',
+    description:
+      'High-speed delta and SCARA configurations integrated with machine vision for dynamic parts localization on moving conveyors.',
+    specs: ['Delta · SCARA', '2D / 3D Vision', '0.02 s Index Time'],
+  },
+  {
+    title: 'Complex Assembly',
+    icon: 'architecture',
+    description:
+      'Force-torque feedback enabled manipulators for delicate insertion, threaded fastening and tolerance-critical protocols.',
+    specs: ['6 DoF F/T Sensing', 'Adaptive Force Mode', 'Sub-mm Repeatability'],
+  },
+  {
+    title: 'Material Handling',
+    icon: 'forklift',
+    description:
+      'Heavy-payload manipulation, machine tending, and line-balancing integration with legacy conveyor systems.',
+    specs: ['Up to 500 kg', 'Machine Tending', 'Safety-Rated Stops'],
+  },
+  {
+    title: 'Robotic Deburring',
+    icon: 'grain',
+    description:
+      'Compliant end-of-arm tooling for post-casting finishing with automated tool-change racks.',
+    specs: ['Compliance EOAT', 'Auto Tool-Change', 'Adaptive Path'],
+  },
+];
+
+const automationComponents = [
+  {
+    title: 'PLC & SCADA Architecture',
+    description:
+      'Real-time telemetry acquisition. Redundant programmable logic controllers for zero-downtime execution environments.',
+    bullets: ['Siemens · Allen-Bradley · Schneider', 'Hot-standby redundancy', 'OPC UA integration'],
+  },
+  {
+    title: 'Multi-Axis Motion Control',
+    description:
+      'Synchronized servo and stepper drive arrays with microsecond-level trajectory planning and execution.',
+    bullets: ['Coordinated motion planning', 'EtherCAT backbone', 'Sub-ms synchronization'],
+  },
+  {
+    title: 'Machine Vision',
+    description:
+      'Inspection, gauging, guidance and code-reading. Deep-learning classification for defect detection at line speed.',
+    bullets: ['2D & 3D imaging', 'DL defect detection', 'Cognex · Keyence · Basler'],
+  },
+  {
+    title: 'Custom Control Panels',
+    description:
+      'UL-listed cabinet fabrication, schematic design, and on-site commissioning. Ready for hostile environments.',
+    bullets: ['UL/IEC compliance', 'Thermal management', 'IP54 / IP65 builds'],
+  },
+];
+---
+
+<Layout
+  title="Solutions · Integrated Industrial Intelligence"
+  description="Robotics, Automation, EMS and BMS solutions. PLC/SCADA, vision systems, welding and palletizing cells engineered by CorobotX."
+  active="solutions"
+>
+  <!-- HERO ============================================================= -->
+  <section class="relative border-b border-surface-variant industrial-grid overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+      <img
+        src="/images/products/welding-cell.jpeg"
+        alt=""
+        aria-hidden="true"
+        class="w-full h-full object-cover opacity-25 mix-blend-luminosity"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-transparent"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+    </div>
+    <div class="relative z-10 max-w-[1600px] mx-auto px-6 md:px-10 pt-20 md:pt-24 pb-12">
+      <div class="flex items-center gap-3 mb-4" data-reveal>
+        <span class="material-symbols-outlined text-brand-orange">memory</span>
+        <span class="label-caps text-brand-orange">System Architecture</span>
+      </div>
+
+      <h1
+        class="font-sans font-black text-[32px] md:text-[48px] text-on-surface uppercase leading-[1.08] tracking-[-0.025em] max-w-5xl text-balance"
+        data-reveal
+      >
+        Integrated Industrial <span class="text-brand-orange">Intelligence</span>.
+      </h1>
+
+      <p
+        class="font-sans text-body-md md:text-body-lg text-on-surface-variant mt-5 max-w-3xl text-pretty"
+        data-reveal
+      >
+        Precision-engineered robotics and automation ecosystems designed for high-density operational
+        environments. Optimizing throughput, structural integrity, and energy utilization across your
+        facility network.
+      </p>
+
+    </div>
+  </section>
+
+  <!-- ROBOTICS (LIGHT) ================================================ -->
+  <section class="section-light bg-background border-b border-surface-variant" id="robotics">
+    <div class="max-w-[1600px] mx-auto px-6 md:px-10 py-14 md:py-20">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 mb-12">
+        <div class="lg:col-span-8" data-reveal>
+          <div class="flex items-center gap-3 mb-4">
+            <span class="label-caps text-brand-orange">01 / ROBOTICS</span>
+            <span class="h-px flex-1 bg-surface-variant"></span>
+          </div>
+          <h2 class="font-sans font-bold text-[24px] md:text-[34px] text-on-surface uppercase tracking-tight leading-tight">
+            Industrial Robotics
+          </h2>
+          <p class="font-sans text-body-md md:text-body-lg text-on-surface-variant mt-5 max-w-2xl">
+            High-payload kinematic systems engineered for sub-millimeter precision in hostile
+            manufacturing environments.
+          </p>
+        </div>
+        <div class="lg:col-span-4 border border-outline-variant bg-surface-container p-5" data-reveal>
+          <div class="mono-data text-outline mb-2">PAYLOAD RANGE</div>
+          <div class="font-sans font-black text-[32px] text-brand-orange leading-none">
+            1 – 500 KG
+          </div>
+          <div class="mono-data text-on-surface-variant mt-4">
+            Across partner chassis platforms. Vision-guided or teach-pendant programmed.
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" data-stagger>
+        {roboticsModules.map(m => (
+          <article
+            class="border border-surface-variant bg-surface-container-low p-6 hover:border-brand-orange hover:bg-surface-container transition-all duration-300 group corner-brackets hover-underline relative"
+            data-reveal
+          >
+            <div class="flex justify-between items-start mb-6 border-b border-surface-variant pb-4">
+              <div class="icon-chip">
+                <span class="material-symbols-outlined text-2xl">{m.icon}</span>
+              </div>
+            </div>
+            <h3 class="font-sans font-semibold text-h3 text-on-surface mb-3 group-hover:text-brand-orange transition-colors">
+              {m.title}
+            </h3>
+            <p class="font-sans text-body-md text-on-surface-variant leading-relaxed">
+              {m.description}
+            </p>
+            <div class="flex flex-wrap gap-2 mt-5 pt-4 border-t border-surface-variant">
+              {m.specs.map(s => (
+                <span class="mono-data text-brand-orange border border-brand-orange/20 bg-surface px-2.5 py-1 group-hover:border-brand-orange/60 group-hover:bg-brand-orange/10 transition-colors">
+                  {s}
+                </span>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- AUTOMATION ======================================================= -->
+  <section class="bg-surface-container-lowest border-b border-surface-variant" id="automation">
+    <div class="max-w-[1600px] mx-auto px-6 md:px-10 py-14 md:py-20 grid grid-cols-1 md:grid-cols-12 gap-10">
+      <div class="md:col-span-4" data-reveal>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="label-caps text-brand-cyan">02 / AUTOMATION</span>
+        </div>
+        <h2 class="font-sans font-bold text-[24px] md:text-[34px] text-on-surface uppercase tracking-tight leading-tight">
+          Automation Systems
+        </h2>
+        <p class="font-sans text-body-md md:text-body-lg text-on-surface-variant mt-5">
+          Centralized logic processing and distributed motor-control networks — the nervous system of
+          your operation.
+        </p>
+
+        <div class="mt-8 bg-surface-container border border-outline-variant p-5">
+          <div class="mono-data text-outline mb-2">CONTROL LOOP LATENCY</div>
+          <div class="font-sans font-black text-[40px] text-brand-cyan leading-none">< 1 ms</div>
+          <div class="mono-data text-on-surface-variant mt-3">
+            EtherCAT backbone · deterministic bus performance
+          </div>
+        </div>
+      </div>
+
+      <div class="md:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-4" data-stagger>
+        {automationComponents.map((c, i) => (
+          <article
+            class="group border-l-2 border-surface-variant hover:border-brand-cyan bg-surface-container hover:bg-surface-container-high p-6 transition-all duration-300 hover-underline relative cursor-default"
+            data-reveal
+          >
+            <div class="flex items-center justify-between mb-4">
+              <span class="mono-data text-brand-cyan">02.{String(i + 1).padStart(2, '0')}</span>
+              <div class="icon-chip icon-chip--cyan">
+                <span class="material-symbols-outlined text-xl">bolt</span>
+              </div>
+            </div>
+            <h3 class="font-sans font-semibold text-h3 text-on-surface mb-2 group-hover:text-brand-cyan transition-colors">
+              {c.title}
+            </h3>
+            <p class="font-sans text-body-md text-on-surface-variant mb-4">{c.description}</p>
+            <ul class="flex flex-col gap-1.5">
+              {c.bullets.map(b => (
+                <li class="mono-data text-on-surface-variant flex items-center gap-2 group-hover:text-on-surface transition-colors">
+                  <span class="w-1.5 h-1.5 bg-brand-cyan rounded-full"></span>
+                  {b}
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- EMS & BMS PAIR (LIGHT) =========================================== -->
+  <section class="section-light bg-background industrial-grid">
+    <div class="max-w-[1600px] mx-auto px-6 md:px-10 py-14 md:py-20 grid grid-cols-1 md:grid-cols-2 gap-4">
+      <!-- EMS -->
+      <article
+        id="ems"
+        class="group border border-outline-variant hover:border-brand-cyan bg-surface-container hover:bg-surface-container-high p-8 md:p-10 flex flex-col gap-6 relative overflow-hidden transition-all duration-300 corner-brackets"
+        data-reveal="left"
+      >
+        <div class="flex items-start justify-between">
+          <div>
+            <div class="label-caps text-brand-cyan mb-3">03 / FACILITY OPTIMIZATION</div>
+            <h2 class="font-sans font-bold text-[22px] md:text-[30px] text-on-surface uppercase tracking-tight group-hover:text-brand-cyan transition-colors">
+              Energy Management
+            </h2>
+          </div>
+          <div class="icon-chip icon-chip--cyan icon-chip-lg">
+            <span class="material-symbols-outlined text-3xl">electric_bolt</span>
+          </div>
+        </div>
+
+        <p class="font-sans text-body-md md:text-body-lg text-on-surface-variant">
+          Granular power telemetry and consumption-optimization algorithms. Peak-load shedding and
+          demand-response ready.
+        </p>
+
+        <div class="grid grid-cols-2 gap-6 mt-auto pt-8 border-t border-surface-variant">
+          <div>
+            <div class="label-caps text-on-surface-variant mb-1">MONITORING</div>
+            <div class="mono-data text-on-surface">3-Phase Power Logging</div>
+          </div>
+          <div>
+            <div class="label-caps text-on-surface-variant mb-1">ANALYSIS</div>
+            <div class="mono-data text-on-surface">Predictive Load Balancing</div>
+          </div>
+          <div>
+            <div class="label-caps text-on-surface-variant mb-1">RESPONSE</div>
+            <div class="mono-data text-on-surface">Peak Shaving Schedules</div>
+          </div>
+          <div>
+            <div class="label-caps text-on-surface-variant mb-1">REPORTING</div>
+            <div class="mono-data text-on-surface">ISO 50001 Aligned</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- BMS -->
+      <article
+        id="bms"
+        class="group border border-outline-variant hover:border-brand-orange bg-surface-container hover:bg-surface-container-high p-8 md:p-10 flex flex-col gap-6 relative overflow-hidden transition-all duration-300 corner-brackets"
+        data-reveal="right"
+      >
+        <div class="absolute top-0 right-0 p-4 opacity-10 pointer-events-none group-hover:opacity-25 transition-opacity">
+          <span class="material-symbols-outlined text-[120px]">domain</span>
+        </div>
+
+        <div class="flex items-start justify-between relative z-10">
+          <div>
+            <div class="label-caps text-brand-orange mb-3">04 / INFRASTRUCTURE</div>
+            <h2 class="font-sans font-bold text-[22px] md:text-[30px] text-on-surface uppercase tracking-tight group-hover:text-brand-orange transition-colors">
+              Building Management
+            </h2>
+          </div>
+          <div class="icon-chip icon-chip-lg">
+            <span class="material-symbols-outlined text-3xl">business</span>
+          </div>
+        </div>
+
+        <p class="font-sans text-body-md md:text-body-lg text-on-surface-variant relative z-10">
+          Environmental stabilization and physical-security integration for industrial assets.
+          One protocol, every subsystem.
+        </p>
+
+        <div class="flex flex-wrap gap-2 mt-auto pt-8 border-t border-surface-variant relative z-10">
+          {['HVAC Control Loops', 'Automated Lighting', 'Biometric Access', 'CCTV Integration', 'Fire & Safety', 'Occupancy Sensing'].map(t => (
+            <span class="mono-data border border-outline-variant bg-surface px-3 py-1.5 text-on-surface-variant">
+              {t}
+            </span>
+          ))}
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- CTA ============================================================== -->
+  <section class="bg-background border-t border-surface-variant">
+    <div class="max-w-[1600px] mx-auto px-6 md:px-10 py-14 md:py-20">
+      <div class="relative border border-surface-variant bg-surface-container-lowest p-8 md:p-12 corner-ticks rounded-lg overflow-hidden" data-reveal>
+        <div class="scan-sweep"></div>
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-8">
+          <div class="max-w-2xl">
+            <div class="label-caps text-brand-orange mb-4">// NEXT STEP</div>
+            <h2 class="font-sans font-black text-[26px] md:text-[38px] text-on-surface uppercase tracking-tight leading-tight text-balance">
+              Let's Architect Your <span class="text-brand-orange">Next Line</span>.
+            </h2>
+            <p class="font-sans text-body-md text-on-surface-variant mt-4">
+              Share your operational targets. Our engineers return with a system topology, OEM selection and cycle-time model.
+            </p>
+          </div>
+          <a href="/about#contact" class="btn-primary shrink-0">
+            Start a Project
+            <span class="material-symbols-outlined text-base">arrow_forward</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

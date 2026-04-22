@@ -1,0 +1,296 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+
+const partners = [
+  {
+    name: 'Shibaura Machine',
+    tag: 'Industrial Robotics',
+    logo: '/images/partners/shibaura.jpg',
+    focus: 'SCARA & 6-Axis',
+    payload: '1 kg – 50 kg',
+    description:
+      "Partnering to deploy ultra-high-speed assembly and material handling systems. Shibaura's mechanical rigidity paired with CorobotX motion planning reduces cycle times by up to 18%.",
+    accent: 'orange' as const,
+    stats: [
+      { label: 'Integration', value: 'SCARA · 6-Axis' },
+      { label: 'Payload', value: '1 – 50 kg' },
+      { label: 'Reach', value: 'Up to 2.2 m' },
+      { label: 'Cycle Gain', value: '+18%' },
+    ],
+    bg: '/images/products/shibaura-trio.jpeg',
+  },
+  {
+    name: 'OTC DAIHEN',
+    tag: 'Welding Systems',
+    logo: '/images/partners/otc-daihen.png',
+    focus: 'Arc & Laser',
+    payload: 'N/A',
+    description:
+      "Delivering flawless seam tracking and spatter reduction. OTC DAIHEN's specialized welding technology combined with our adaptive vision systems ensures zero-defect structural joints.",
+    accent: 'cyan' as const,
+    stats: [
+      { label: 'Process', value: 'Arc · Laser' },
+      { label: 'Control', value: 'Synchro-Feed' },
+      { label: 'Tracking', value: '±0.05 mm' },
+      { label: 'Spatter Reduction', value: '–42%' },
+    ],
+    bg: '/images/products/welding-arms.jpeg',
+  },
+];
+
+const industries = [
+  {
+    id: 'MFG',
+    title: 'Manufacturing',
+    icon: 'factory',
+    description:
+      'End-to-end automation for automotive, electronics, and heavy machinery. Resilient production lines capable of 24/7 continuous operation with predictive-maintenance telemetry.',
+    span: 'md:col-span-8',
+    bg: '/images/products/welding-cell.jpeg',
+    accent: 'orange' as const,
+  },
+  {
+    id: 'F&B',
+    title: 'Food & Beverage',
+    icon: 'restaurant',
+    description:
+      'High-speed pick, pack and palletizing logic adhering to rigorous IP67 and IP69K sanitary compliance standards.',
+    span: 'md:col-span-4',
+    accent: 'cyan' as const,
+  },
+  {
+    id: 'PHARMA',
+    title: 'Pharmaceuticals',
+    icon: 'science',
+    description:
+      'Cleanroom-certified robotics for precise handling, sorting and sterile packaging of highly sensitive biological materials.',
+    span: 'md:col-span-4',
+    accent: 'orange' as const,
+  },
+  {
+    id: 'LOG',
+    title: 'Logistics',
+    icon: 'local_shipping',
+    description:
+      'Fleet management for Automated Guided Vehicles (AGVs) and complex sorting algorithms for high-throughput fulfillment centers.',
+    span: 'md:col-span-4',
+    accent: 'cyan' as const,
+  },
+  {
+    id: 'BLDG',
+    title: 'Commercial Buildings',
+    icon: 'domain',
+    description:
+      'Autonomous mobile robots deployed for facility maintenance, large-scale floor cleaning, and secure internal material transport.',
+    span: 'md:col-span-4',
+    accent: 'orange' as const,
+  },
+  {
+    id: 'ENGY',
+    title: 'Energy & Utilities',
+    icon: 'bolt',
+    description:
+      'Remote telemetry, substation monitoring and automated valve/switch control for resilient grid-adjacent operations.',
+    span: 'md:col-span-8',
+    accent: 'cyan' as const,
+  },
+];
+---
+
+<Layout
+  title="Partners & Industries · Ecosystem Integration"
+  description="CorobotX integrates world-class robotic chassis from Shibaura Machine and OTC DAIHEN — deployed across manufacturing, pharma, food, logistics, and energy sectors."
+  active="partners"
+>
+  <!-- HERO ============================================================= -->
+  <section class="border-b border-surface-variant">
+    <div class="max-w-[1600px] mx-auto px-6 md:px-10 pt-20 md:pt-24 pb-12">
+      <div class="flex items-center gap-3 mb-4" data-reveal>
+        <span class="material-symbols-outlined text-brand-orange">hub</span>
+        <span class="label-caps text-brand-orange">Ecosystem Integration</span>
+      </div>
+
+      <h1
+        class="font-sans font-black text-[32px] md:text-[48px] text-on-surface uppercase leading-[1.08] tracking-[-0.025em] max-w-5xl text-balance"
+        data-reveal
+      >
+        Strategic Hardware Partnerships &<br class="hidden md:block" />
+        <span class="text-brand-orange">Industrial Applications.</span>
+      </h1>
+
+      <p class="font-sans text-body-md md:text-body-lg text-on-surface-variant mt-5 max-w-3xl text-pretty" data-reveal>
+        CorobotX seamlessly integrates world-class robotic chassis with our proprietary control software —
+        delivering unparalleled precision and uptime across critical global manufacturing sectors.
+      </p>
+    </div>
+  </section>
+
+  <!-- CORE HARDWARE PARTNERS =========================================== -->
+  <section class="bg-surface industrial-grid border-b border-surface-variant">
+    <div class="max-w-[1600px] mx-auto px-6 md:px-10 py-14 md:py-20">
+      <SectionHeader
+        eyebrow="// Core Hardware Partners"
+        title="Authorized Chassis · Certified Integration."
+        subtitle="We deploy OEM-grade hardware augmented with our in-house motion planning, vision and control layers."
+      />
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4" data-stagger>
+        {partners.map(p => (
+          <article
+            class:list={[
+              'group relative bg-surface-container border border-outline-variant p-8 md:p-10 min-h-[520px] flex flex-col justify-between overflow-hidden transition-all duration-300 corner-brackets',
+              p.accent === 'orange' ? 'hover:border-brand-orange' : 'hover:border-brand-cyan',
+            ]}
+            data-reveal
+          >
+            <div
+              class="absolute inset-0 bg-cover bg-center opacity-10 grayscale group-hover:grayscale-0 group-hover:opacity-25 mix-blend-luminosity transition-all duration-700 pointer-events-none"
+              style={`background-image: url('${p.bg}')`}
+            ></div>
+
+            <div class="relative z-10 flex justify-between items-start gap-4">
+              <div class="min-w-0">
+                <span
+                  class:list={[
+                    'inline-block label-caps px-3 py-1.5 mb-5 uppercase',
+                    p.accent === 'orange'
+                      ? 'bg-brand-orange text-white'
+                      : 'bg-brand-cyan text-on-secondary-container',
+                  ]}
+                >
+                  {p.tag}
+                </span>
+                <h3 class="font-sans font-black text-[26px] md:text-[34px] text-on-surface tracking-tighter leading-[1.1]">
+                  {p.name}
+                </h3>
+              </div>
+              <div
+                class:list={[
+                  'bg-white h-20 w-32 md:h-24 md:w-40 shrink-0 flex items-center justify-center border transition-colors',
+                  p.accent === 'orange'
+                    ? 'border-brand-orange/30 group-hover:border-brand-orange'
+                    : 'border-brand-cyan/30 group-hover:border-brand-cyan',
+                ]}
+              >
+                <img
+                  src={p.logo}
+                  alt={`${p.name} logo`}
+                  loading="lazy"
+                  class="h-12 md:h-14 w-auto object-contain"
+                />
+              </div>
+            </div>
+
+            <div class="relative z-10 border-t border-surface-variant pt-6 mt-12 bg-surface-container/85 backdrop-blur-sm p-5 -mx-1">
+              <div class="grid grid-cols-2 gap-4 mb-5">
+                {p.stats.map(s => (
+                  <div>
+                    <div class="label-caps text-on-surface-variant mb-1">{s.label}</div>
+                    <div
+                      class:list={[
+                        'mono-data font-semibold',
+                        p.accent === 'orange' ? 'text-brand-orange' : 'text-brand-cyan',
+                      ]}
+                    >
+                      {s.value}
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <p class="font-sans text-body-md text-on-surface">{p.description}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- INDUSTRIES (LIGHT) =============================================== -->
+  <section class="section-light bg-background" id="industries">
+    <div class="max-w-[1600px] mx-auto px-6 md:px-10 py-14 md:py-20">
+      <SectionHeader
+        eyebrow="// Industries Served"
+        title="Deployed in Critical Sectors."
+        subtitle="Every sector has its own constraints — IP ratings, cleanroom class, tolerance budgets, throughput targets. We tune the stack to match."
+      />
+
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-4" data-stagger>
+        {industries.map(ind => (
+          <article
+            class:list={[
+              'col-span-1 group bg-surface-container border border-outline-variant p-8 flex flex-col justify-between min-h-[300px] transition-all duration-300 relative overflow-hidden corner-brackets hover-underline',
+              ind.span,
+              ind.accent === 'orange'
+                ? 'hover:border-brand-orange hover:bg-surface-container-high'
+                : 'hover:border-brand-cyan hover:bg-surface-container-high',
+            ]}
+            data-reveal
+          >
+            {ind.bg && (
+              <div
+                class="absolute right-0 top-0 w-2/3 h-full bg-cover bg-center opacity-15 mix-blend-screen pointer-events-none group-hover:opacity-25 transition-opacity duration-500"
+                style={`background-image: url('${ind.bg}')`}
+              ></div>
+            )}
+
+            <div class="relative z-10 flex items-start justify-between mb-6">
+              <div class="flex items-center gap-4">
+                <div class={`icon-chip icon-chip-lg ${ind.accent === 'cyan' ? 'icon-chip--cyan' : ''}`}>
+                  <span class="material-symbols-outlined text-3xl">{ind.icon}</span>
+                </div>
+                <div>
+                  <h3
+                    class:list={[
+                      'font-sans font-bold text-h2 text-on-surface leading-tight transition-colors',
+                      ind.accent === 'orange'
+                        ? 'group-hover:text-brand-orange'
+                        : 'group-hover:text-brand-cyan',
+                    ]}
+                  >
+                    {ind.title}
+                  </h3>
+                </div>
+              </div>
+            </div>
+
+            <p
+              class:list={[
+                'relative z-10 font-sans text-body-md text-on-surface-variant max-w-xl pl-4 transition-colors',
+                ind.accent === 'orange' ? 'border-l-2 border-brand-orange' : 'border-l-2 border-brand-cyan',
+                'group-hover:text-on-surface',
+              ]}
+            >
+              {ind.description}
+            </p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA ============================================================== -->
+  <section class="bg-background border-t border-surface-variant">
+    <div class="max-w-[1600px] mx-auto px-6 md:px-10 py-14 md:py-20">
+      <div class="relative border border-outline-variant bg-surface-container-lowest p-8 md:p-12 rounded-lg overflow-hidden" data-reveal>
+        <div class="scan-sweep"></div>
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-8">
+          <div class="max-w-2xl">
+            <div class="label-caps text-brand-orange mb-4">// PARTNERSHIP INQUIRY</div>
+            <h2 class="font-sans font-black text-[26px] md:text-[38px] text-on-surface uppercase tracking-tight leading-tight">
+              Become an <span class="text-brand-orange">OEM Partner</span>.
+            </h2>
+            <p class="font-sans text-body-md text-on-surface-variant mt-4 text-pretty">
+              Add your chassis or instrument to the CorobotX integration stack. Our team handles
+              certification, driver development and go-to-market.
+            </p>
+          </div>
+          <a href="/about#contact" class="btn-primary shrink-0">
+            Partner With Us
+            <span class="material-symbols-outlined text-base">handshake</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

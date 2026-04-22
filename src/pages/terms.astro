@@ -1,0 +1,52 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const updated = 'April 2026';
+---
+
+<Layout title="Terms of Service" description="Terms governing use of the CorobotX marketing website.">
+  <section class="border-b border-surface-variant">
+    <div class="max-w-3xl mx-auto px-6 md:px-10 pt-24 md:pt-32 pb-12">
+      <div class="label-caps text-brand-orange mb-4">// LEGAL</div>
+      <h1 class="font-sans font-black text-[40px] md:text-[64px] text-on-surface uppercase leading-tight tracking-tight">
+        Terms of Service
+      </h1>
+      <p class="mono-data text-outline mt-4">Last updated: {updated}</p>
+    </div>
+  </section>
+
+  <section class="bg-surface-container-lowest">
+    <div class="max-w-3xl mx-auto px-6 md:px-10 py-16 flex flex-col gap-10 font-sans text-body-md text-on-surface-variant leading-relaxed">
+      <div>
+        <h2 class="label-caps text-brand-orange mb-3">01 · Use of Website</h2>
+        <p>
+          The CorobotX website is provided as an informational and marketing resource. Content is
+          offered as-is without warranties of accuracy, completeness, or fitness for a particular
+          purpose.
+        </p>
+      </div>
+      <div>
+        <h2 class="label-caps text-brand-orange mb-3">02 · Intellectual Property</h2>
+        <p>
+          All CorobotX marks, trade names, logos, and content are property of CorobotX. Partner marks
+          (Shibaura Machine, OTC DAIHEN) belong to their respective owners and are used under
+          authorized partnership.
+        </p>
+      </div>
+      <div>
+        <h2 class="label-caps text-brand-orange mb-3">03 · Engagement Terms</h2>
+        <p>
+          Any engineering services delivered by CorobotX are governed by a separate written contract
+          between the parties. Nothing on this website constitutes a binding offer.
+        </p>
+      </div>
+      <div>
+        <h2 class="label-caps text-brand-orange mb-3">04 · Contact</h2>
+        <p>
+          Questions? Reach us at
+          <a href="mailto:info@corobotx.com" class="text-brand-orange underline">info@corobotx.com</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>

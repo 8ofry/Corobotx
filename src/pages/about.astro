@@ -1,0 +1,394 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+
+const methodology = [
+  {
+    n: '01',
+    title: 'Consultation',
+    icon: 'forum',
+    description:
+      'In-depth analysis of operational bottlenecks and strategic objectives to outline functional requirements.',
+  },
+  {
+    n: '02',
+    title: 'Design',
+    icon: 'architecture',
+    description:
+      'Architecting system topology, selecting ideal hardware, and defining the integration blueprint.',
+  },
+  {
+    n: '03',
+    title: 'Engineering',
+    icon: 'engineering',
+    description:
+      'Rigorous software development, kinetic modeling, and precision component fabrication.',
+  },
+  {
+    n: '04',
+    title: 'Implementation',
+    icon: 'precision_manufacturing',
+    description:
+      'Physical deployment, hardware mounting, and establishing network connectivity on the facility floor.',
+  },
+  {
+    n: '05',
+    title: 'Commissioning',
+    icon: 'fact_check',
+    description:
+      'Systematic testing, safety validation, calibration, and performance tuning under load.',
+  },
+  {
+    n: '06',
+    title: 'Support',
+    icon: 'support_agent',
+    description:
+      'Ongoing telemetry monitoring, preventative maintenance, and rapid-response technical assistance.',
+  },
+];
+
+const values = [
+  {
+    icon: 'visibility',
+    eyebrow: 'Our Vision',
+    title: 'Leading the MENA Region',
+    body:
+      'To be the foremost system integrator in Egypt and the MENA region — recognized for pioneering robotic integration that defines the next era of industrial capability and resilience.',
+  },
+  {
+    icon: 'rocket_launch',
+    eyebrow: 'Our Mission',
+    title: 'Energy-Optimized Solutions',
+    body:
+      'Delivering high-quality, efficient, and rigorously engineered solutions. We prioritize energy optimization and operational longevity to maximize ROI for our industrial partners.',
+  },
+];
+---
+
+<Layout
+  title="About Us & Contact · Precision Engineered Automations"
+  description="CorobotX — a MENA-region system integrator for advanced robotics and industrial automation. Meet the team, explore our methodology, and initiate a project."
+  active="about"
+>
+  <!-- HERO ============================================================= -->
+  <section class="border-b border-surface-variant">
+    <div class="max-w-[1600px] mx-auto px-6 md:px-10 pt-20 md:pt-24 pb-12 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+      <div class="lg:col-span-6" data-reveal>
+        <div class="inline-flex items-center gap-2 border border-outline-variant px-3 py-1.5 mb-6">
+          <span class="status-dot"></span>
+          <span class="label-caps text-brand-orange">System Integrator</span>
+        </div>
+
+        <h1 class="font-sans font-black text-[32px] md:text-[48px] text-on-surface uppercase leading-[1.08] tracking-[-0.025em] text-balance">
+          Precision Engineered <span class="text-brand-orange">Automations</span>.
+        </h1>
+
+        <p class="font-sans text-body-md md:text-body-lg text-on-surface-variant mt-5 max-w-xl text-pretty">
+          Architecting the future of industrial efficiency across Egypt and the MENA region. We translate
+          complex operational challenges into streamlined, energy-optimized robotic solutions.
+        </p>
+
+        <div class="flex flex-wrap gap-3 mt-8">
+          <a href="#contact" class="btn-primary">
+            Contact HQ
+            <span class="material-symbols-outlined text-base">send</span>
+          </a>
+          <a href="#methodology" class="btn-ghost">Our Process</a>
+        </div>
+      </div>
+
+      <div class="lg:col-span-6 relative h-[420px] md:h-[520px] border border-outline-variant bg-surface-container overflow-hidden rounded-lg" data-reveal>
+        <img
+          src="/images/products/welding-cell.jpeg"
+          alt="OTC DAIHEN robotic welding cell in studio lighting"
+          loading="lazy"
+          class="w-full h-full object-cover opacity-90 hover:scale-[1.02] transition-transform duration-700"
+        />
+        <div class="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-background/90 via-background/40 to-transparent pointer-events-none"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISION & MISSION (LIGHT) ========================================= -->
+  <section class="section-light bg-background border-b border-surface-variant">
+    <div class="max-w-[1600px] mx-auto px-6 md:px-10 py-14 md:py-20 grid grid-cols-1 md:grid-cols-2 gap-4">
+      {values.map((v, i) => (
+        <div
+          class="bg-surface-container border border-outline-variant p-8 md:p-10 flex flex-col gap-4 relative group hover:border-brand-orange hover:bg-surface-container-high transition-all duration-300 corner-brackets hover-underline overflow-hidden"
+          data-reveal={i === 0 ? 'left' : 'right'}
+        >
+          <div class="absolute top-6 right-6 opacity-10 group-hover:opacity-70 transition-opacity duration-500 group-hover:rotate-6 transform transition-transform">
+            <span class="material-symbols-outlined text-[80px] text-brand-orange">{v.icon}</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="icon-chip">
+              <span class="material-symbols-outlined text-xl">{v.icon}</span>
+            </div>
+            <h2 class="label-caps text-brand-cyan tracking-widest">
+              {v.eyebrow}
+            </h2>
+          </div>
+          <div class="border-b border-surface-variant pt-2"></div>
+          <h3 class="font-sans font-bold text-[22px] md:text-[28px] text-on-surface tracking-tight leading-tight relative z-10 group-hover:text-brand-orange transition-colors">
+            {v.title}
+          </h3>
+          <p class="font-sans text-body-md text-on-surface-variant relative z-10 text-pretty">
+            {v.body}
+          </p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- METHODOLOGY ====================================================== -->
+  <section class="bg-background industrial-grid border-b border-surface-variant" id="methodology">
+    <div class="max-w-[1600px] mx-auto px-6 md:px-10 py-14 md:py-20">
+      <SectionHeader
+        eyebrow="// Deployment Methodology"
+        title="Six-Step Engineering Approach."
+        subtitle="From discovery to ongoing support — every project follows the same rigorous pipeline."
+      />
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" data-stagger>
+        {methodology.map(step => (
+          <article
+            class="relative border border-outline-variant bg-surface p-6 md:p-8 flex flex-col gap-4 group hover:border-brand-orange hover:bg-surface-container transition-all duration-300 corner-brackets hover-underline"
+            data-reveal
+          >
+            <div class="flex justify-between items-center border-b border-surface-variant pb-3">
+              <span class="font-sans font-black text-[40px] text-brand-cyan leading-none group-hover:text-brand-orange transition-colors">
+                {step.n}
+              </span>
+              <div class="icon-chip">
+                <span class="material-symbols-outlined text-xl">{step.icon}</span>
+              </div>
+            </div>
+            <h4 class="font-sans font-bold text-h3 text-on-surface group-hover:text-brand-orange transition-colors">
+              {step.title}
+            </h4>
+            <p class="font-sans text-body-md text-on-surface-variant">{step.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT (LIGHT) ================================================= -->
+  <section class="section-light bg-background" id="contact">
+    <div class="max-w-[1600px] mx-auto px-6 md:px-10 py-14 md:py-20 grid grid-cols-1 lg:grid-cols-12 gap-10">
+      <!-- Form -->
+      <div class="lg:col-span-7 flex flex-col gap-6" data-reveal>
+        <div>
+          <div class="label-caps text-brand-orange tracking-widest mb-3">// INITIATE CONNECTION</div>
+          <h2 class="font-sans font-black text-[28px] md:text-[40px] text-on-surface uppercase tracking-tight leading-tight">
+            Contact HQ
+          </h2>
+          <p class="font-sans text-body-md text-on-surface-variant mt-3 max-w-xl">
+            Share operational targets and we'll respond within one business day with a system topology
+            and an initial cycle-time model.
+          </p>
+        </div>
+
+        <form
+          id="contact-form"
+          class="flex flex-col gap-4 mt-4"
+          method="POST"
+          action="https://formspree.io/f/YOUR_FORM_ID"
+          autocomplete="on"
+        >
+          <div class="flex flex-col gap-2">
+            <label for="f-name" class="mono-data text-on-surface-variant uppercase">
+              Operator ID / Name *
+            </label>
+            <input
+              id="f-name"
+              name="name"
+              type="text"
+              required
+              placeholder="ENTER NAME"
+              class="bg-surface border border-outline focus:border-brand-orange focus:ring-1 focus:ring-brand-orange text-on-surface p-4 w-full font-sans outline-none transition-all placeholder:text-surface-variant placeholder:uppercase placeholder:text-xs placeholder:tracking-widest"
+            />
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="flex flex-col gap-2">
+              <label for="f-email" class="mono-data text-on-surface-variant uppercase">
+                Comms Link / Email *
+              </label>
+              <input
+                id="f-email"
+                name="email"
+                type="email"
+                required
+                placeholder="ENTER EMAIL"
+                class="bg-surface border border-outline focus:border-brand-orange focus:ring-1 focus:ring-brand-orange text-on-surface p-4 w-full font-sans outline-none transition-all placeholder:text-surface-variant placeholder:uppercase placeholder:text-xs placeholder:tracking-widest"
+              />
+            </div>
+            <div class="flex flex-col gap-2">
+              <label for="f-company" class="mono-data text-on-surface-variant uppercase">
+                Organization
+              </label>
+              <input
+                id="f-company"
+                name="company"
+                type="text"
+                placeholder="COMPANY / FACILITY"
+                class="bg-surface border border-outline focus:border-brand-orange focus:ring-1 focus:ring-brand-orange text-on-surface p-4 w-full font-sans outline-none transition-all placeholder:text-surface-variant placeholder:uppercase placeholder:text-xs placeholder:tracking-widest"
+              />
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-2">
+            <label for="f-industry" class="mono-data text-on-surface-variant uppercase">
+              Facility Type
+            </label>
+            <select
+              id="f-industry"
+              name="industry"
+              class="bg-surface border border-outline focus:border-brand-orange focus:ring-1 focus:ring-brand-orange text-on-surface p-4 w-full font-sans outline-none transition-all appearance-none"
+            >
+              <option value="">SELECT INDUSTRY</option>
+              <option value="manufacturing">Manufacturing & Assembly</option>
+              <option value="food-beverage">Food & Beverage</option>
+              <option value="pharma">Pharmaceuticals</option>
+              <option value="logistics">Logistics & Warehousing</option>
+              <option value="commercial">Commercial Real Estate</option>
+              <option value="energy">Energy & Utilities</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="flex flex-col gap-2">
+            <label for="f-message" class="mono-data text-on-surface-variant uppercase">
+              Operational Directive / Message *
+            </label>
+            <textarea
+              id="f-message"
+              name="message"
+              rows="5"
+              required
+              placeholder="DESCRIBE REQUIREMENTS: PAYLOAD, THROUGHPUT TARGET, EXISTING HARDWARE, DEADLINE…"
+              class="bg-surface border border-outline focus:border-brand-orange focus:ring-1 focus:ring-brand-orange text-on-surface p-4 w-full font-sans outline-none transition-all placeholder:text-surface-variant placeholder:uppercase placeholder:text-xs placeholder:tracking-widest resize-y"
+            ></textarea>
+          </div>
+
+          <!-- Honeypot -->
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="hidden" />
+
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mt-2">
+            <p class="mono-data text-outline">
+              By submitting, you agree to our handling of this transmission for project evaluation.
+            </p>
+            <button type="submit" class="btn-primary self-start md:self-auto">
+              Transmit Data
+              <span class="material-symbols-outlined text-base">send</span>
+            </button>
+          </div>
+
+          <div id="form-status" class="hidden mono-data" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+
+      <!-- Contact panel -->
+      <aside class="lg:col-span-5 flex flex-col gap-4" data-reveal>
+        <div class="bg-surface-container border border-outline-variant p-6 md:p-8 relative overflow-hidden">
+          <img
+            src="/images/products/shibaura-range.jpeg"
+            alt=""
+            loading="lazy"
+            aria-hidden="true"
+            class="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-luminosity pointer-events-none"
+          />
+          <div class="relative z-10 flex flex-col gap-6">
+            <div>
+              <div class="flex items-center gap-2 text-brand-cyan mb-2">
+                <span class="material-symbols-outlined text-base">location_on</span>
+                <span class="mono-data uppercase">Headquarters</span>
+              </div>
+              <p class="font-sans text-body-md text-on-surface">Egypt · MENA Region</p>
+            </div>
+
+            <div>
+              <div class="flex items-center gap-2 text-brand-cyan mb-2">
+                <span class="material-symbols-outlined text-base">mail</span>
+                <span class="mono-data uppercase">Primary Comm Channel</span>
+              </div>
+              <a
+                href="mailto:info@corobotx.com"
+                class="font-sans text-body-md text-on-surface hover:text-brand-orange transition-colors"
+              >
+                info@corobotx.com
+              </a>
+            </div>
+
+            <div>
+              <div class="flex items-center gap-2 text-brand-cyan mb-2">
+                <span class="material-symbols-outlined text-base">schedule</span>
+                <span class="mono-data uppercase">Operations Window</span>
+              </div>
+              <p class="font-sans text-body-md text-on-surface">Sun – Thu · 09:00 – 18:00 GMT+2</p>
+            </div>
+
+            <div class="pt-4 border-t border-surface-variant grid grid-cols-2 gap-4">
+              <div>
+                <div class="label-caps text-outline mb-1">System Status</div>
+                <div class="mono-data text-brand-cyan flex items-center gap-2">
+                  <span class="w-1.5 h-1.5 bg-brand-cyan rounded-full"></span> Online
+                </div>
+              </div>
+              <div>
+                <div class="label-caps text-outline mb-1">Response SLA</div>
+                <div class="mono-data text-on-surface">&lt; 24 h</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-surface-container border border-outline-variant p-6">
+          <div class="label-caps text-brand-orange mb-4">// Authorized Partners</div>
+          <div class="grid grid-cols-2 gap-3">
+            <div class="bg-white aspect-[3/2] flex items-center justify-center border border-outline-variant hover:border-brand-orange transition-colors">
+              <img
+                src="/images/partners/shibaura.jpg"
+                alt="Shibaura Machine"
+                loading="lazy"
+                class="h-10 w-auto object-contain"
+              />
+            </div>
+            <div class="bg-white aspect-[3/2] flex items-center justify-center border border-outline-variant hover:border-brand-orange transition-colors">
+              <img
+                src="/images/partners/otc-daihen.png"
+                alt="OTC DAIHEN"
+                loading="lazy"
+                class="h-10 w-auto object-contain"
+              />
+            </div>
+          </div>
+          <div class="mono-data text-outline mt-4">
+            Certified integration · driver-level support
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+</Layout>
+
+<script is:inline>
+  (() => {
+    const form = document.getElementById('contact-form');
+    if (!form) return;
+    const status = document.getElementById('form-status');
+    form.addEventListener('submit', e => {
+      // Formspree fallback: if action still points at placeholder, prevent submit and show message
+      if (form.action.includes('YOUR_FORM_ID')) {
+        e.preventDefault();
+        if (status) {
+          status.classList.remove('hidden');
+          status.className = 'mono-data text-brand-orange border border-brand-orange p-4';
+          status.textContent =
+            'TRANSMISSION PENDING · Configure a form endpoint (Formspree, Netlify, or custom) in about.astro → <form action="…">.';
+        }
+      }
+    });
+  })();
+</script>

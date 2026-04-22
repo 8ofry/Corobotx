@@ -1,0 +1,512 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+
+const features = [
+  {
+    icon: 'precision_manufacturing',
+    label: 'Precision Engineering',
+    detail: 'Sub-millimeter repeatability',
+  },
+  {
+    icon: 'bolt',
+    label: 'Energy Optimized',
+    detail: 'ISO 50001 aligned',
+  },
+  {
+    icon: 'verified_user',
+    label: 'Compliance Ready',
+    detail: 'CE · IP67 · IP69K',
+  },
+];
+
+const floatingIcons = [
+  { icon: 'precision_manufacturing', top: '14%', right: '4%', anim: 'animate-float' },
+  { icon: 'visibility', top: '32%', right: '11%', anim: 'animate-float-2' },
+  { icon: 'smart_toy', top: '52%', right: '18%', anim: 'animate-float-3' },
+  { icon: 'bolt', top: '72%', right: '8%', anim: 'animate-float-4' },
+];
+
+const solutionCards = [
+  {
+    span: 'xl:col-span-8',
+    icon: 'smart_toy',
+    title: 'Industrial Robotics',
+    description:
+      'Advanced robotic integration for welding, handling, palletizing, and assembly — powered by industry-leading OEM partners.',
+    tags: ['Welding (MIG/TIG/Laser)', 'Material Handling', 'Palletizing', 'Vision-Guided Assembly'],
+    accent: 'orange' as const,
+    href: '/solutions#robotics',
+  },
+  {
+    span: 'xl:col-span-4',
+    icon: 'electric_meter',
+    title: 'Energy Management',
+    description: 'Real-time telemetry, peak-load shedding, and efficiency analytics across the facility.',
+    tags: ['3-Phase Logging', 'Load Balancing'],
+    accent: 'cyan' as const,
+    href: '/solutions#ems',
+  },
+  {
+    span: 'xl:col-span-4',
+    icon: 'settings_system_daydream',
+    title: 'Automation Systems',
+    description: 'PLC / SCADA, machine vision, and custom control-panel design for zero-downtime operation.',
+    tags: ['PLC · SCADA', 'Motion Control'],
+    accent: 'orange' as const,
+    href: '/solutions#automation',
+  },
+  {
+    span: 'xl:col-span-8',
+    icon: 'business',
+    title: 'Building Management',
+    description: 'Intelligent control of HVAC, lighting, security and access — purpose-built for smart industrial facilities.',
+    tags: ['HVAC Control Loops', 'Automated Lighting', 'Biometric Access', 'CCTV Integration'],
+    accent: 'cyan' as const,
+    href: '/solutions#bms',
+  },
+];
+
+const capabilities = [
+  { icon: 'memory', label: 'Intelligent Computing', detail: 'Edge + cloud hybrid control' },
+  { icon: 'network_check', label: 'MES / ERP Connectivity', detail: 'Unified data flow' },
+  { icon: 'visibility', label: 'Machine Vision', detail: 'Deep-learning defect detection' },
+  { icon: 'bar_chart', label: 'SPC & Reporting', detail: 'Real-time analytics' },
+  { icon: 'smart_toy', label: 'Robotics Control', detail: 'Multi-robot coordination' },
+  { icon: 'code_blocks', label: 'Industrial Software', detail: 'Custom workflow automation' },
+];
+
+const industries = [
+  'Manufacturing & Assembly',
+  'Food & Beverage',
+  'Pharmaceuticals',
+  'Logistics & Warehousing',
+  'Commercial Real Estate',
+  'Energy & Utilities',
+];
+
+const metrics = [
+  { value: 18, suffix: '%', label: 'Cycle-Time Reduction', detail: 'Across deployed robotic cells' },
+  { value: 24, suffix: '/7', label: 'Continuous Operation', detail: 'Predictive maintenance telemetry' },
+  { value: 99.7, suffix: '%', label: 'Uptime Target', detail: 'PLC/SCADA redundant architecture' },
+  { value: 6, suffix: '+', label: 'Industries Served', detail: 'MENA region deployments' },
+];
+
+// Partners list — doubled inside marquee track for seamless loop
+const partners = [
+  { name: 'Shibaura Machine', logo: '/images/partners/shibaura.jpg' },
+  { name: 'OTC DAIHEN', logo: '/images/partners/otc-daihen.png' },
+];
+const partnerTrack = [...partners, ...partners, ...partners, ...partners];
+---
+
+<Layout
+  title="COROBOTX — Precision Powered Automation"
+  description="CorobotX engineers advanced industrial robotics, automation, EMS and BMS solutions. Official partner of Shibaura Machine and OTC DAIHEN across the MENA region."
+  active="home"
+>
+  <!-- ============================== HERO ============================= -->
+  <section class="relative overflow-hidden border-b border-surface-variant min-h-[calc(100vh-80px)] flex items-center">
+    <!-- Parallax background image -->
+    <div class="absolute inset-0 pointer-events-none" data-parallax="0.15">
+      <img
+        src="/images/products/welding-arms.jpeg"
+        alt=""
+        aria-hidden="true"
+        loading="eager"
+        class="w-full h-[115%] object-cover object-center opacity-50 mix-blend-luminosity"
+      />
+    </div>
+    <div class="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-transparent pointer-events-none"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent pointer-events-none"></div>
+    <div class="absolute inset-0 industrial-grid opacity-50 pointer-events-none"></div>
+
+    <!-- Drifting accent lines -->
+    <div class="absolute top-[18%] left-0 w-full h-px bg-gradient-to-r from-transparent via-brand-orange to-transparent opacity-30 animate-drift-x pointer-events-none"></div>
+    <div class="absolute top-0 left-[8%] w-px h-full bg-gradient-to-b from-transparent via-brand-orange to-transparent opacity-25 animate-drift-y pointer-events-none hidden lg:block"></div>
+
+    <!-- Glow orb (top right) -->
+    <div class="glow-orb glow-orb--orange w-[600px] h-[600px] -top-40 -right-40"></div>
+    <div class="glow-orb glow-orb--cyan w-[400px] h-[400px] top-1/2 -left-40"></div>
+
+    <!-- Floating accent icons -->
+    <div class="absolute inset-0 pointer-events-none overflow-hidden hidden lg:block">
+      {floatingIcons.map(f => (
+        <div
+          class={`absolute ${f.anim}`}
+          style={`top: ${f.top}; right: ${f.right}; opacity: 0.35;`}
+        >
+          <div class="p-3 bg-brand-orange/10 border border-brand-orange/30 rounded-lg backdrop-blur-sm">
+            <span class="material-symbols-outlined text-brand-orange text-3xl">{f.icon}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Rotating rings (radar) -->
+    <div class="absolute top-[15%] right-[4%] w-[420px] h-[420px] hidden xl:block pointer-events-none opacity-30">
+      <div class="absolute inset-0 border-2 border-brand-orange/40 rounded-full animate-spin-slow"></div>
+      <div class="absolute inset-8 border border-brand-orange/30 rounded-full animate-spin-reverse"></div>
+      <div class="absolute inset-16 border-2 border-brand-orange/50 rounded-full animate-spin-slower"></div>
+      <div class="absolute inset-24 border border-brand-cyan/40 rounded-full animate-spin-slow"></div>
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-brand-orange rounded-full"></div>
+    </div>
+
+    <!-- Hero content -->
+    <div class="relative z-10 max-w-[1600px] mx-auto px-6 md:px-10 py-20 md:py-24 w-full">
+      <!-- Status chip with ping -->
+      <div
+        class="inline-flex items-center gap-3 px-4 py-2 bg-brand-orange/10 border border-brand-orange/30 mb-8 group cursor-default hover:bg-brand-orange/20 hover:border-brand-orange/50 transition-all duration-300"
+        style="border-radius: 9999px;"
+        data-reveal
+      >
+        <span class="status-dot"></span>
+        <span class="mono-data text-brand-orange uppercase tracking-[0.2em]">
+          Industrial Systems Integrator
+        </span>
+      </div>
+
+      <div class="max-w-4xl">
+        <h1
+          class="font-sans font-black text-[32px] sm:text-[40px] md:text-[52px] lg:text-[60px] leading-[1.04] tracking-[-0.03em] text-on-surface uppercase text-balance"
+          data-reveal
+        >
+          Engineering <span class="text-gradient-orange inline-block">Smart</span><br />
+          Automation.
+        </h1>
+
+        <p
+          class="font-sans text-body-md md:text-body-lg text-on-surface-variant mt-6 max-w-2xl text-pretty"
+          data-reveal
+        >
+          We design and deliver advanced Robotics, Industrial Automation, Energy Management and Building
+          Management solutions for smart factories and intelligent buildings across the MENA region.
+        </p>
+
+        <div class="flex flex-wrap gap-4 items-center mt-10" data-reveal>
+          <a href="/solutions" class="btn-primary">
+            Explore Solutions
+            <span class="material-symbols-outlined text-base">arrow_forward</span>
+          </a>
+          <a href="/about#contact" class="btn-ghost">Request a Quote</a>
+        </div>
+
+        <!-- Feature chips -->
+        <div
+          class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-16 max-w-3xl"
+          data-stagger
+        >
+          {features.map(f => (
+            <div
+              class="group flex items-center gap-4 p-4 bg-surface-container/60 border border-outline-variant backdrop-blur-sm cursor-default hover:border-brand-orange/60 hover:bg-surface-container transition-all duration-300"
+              data-reveal
+            >
+              <div class="icon-chip icon-chip-lg">
+                <span class="material-symbols-outlined text-2xl">{f.icon}</span>
+              </div>
+              <div class="min-w-0">
+                <div class="font-sans font-bold text-on-surface group-hover:text-brand-orange transition-colors">
+                  {f.label}
+                </div>
+                <div class="text-xs text-on-surface-variant mt-0.5 truncate">{f.detail}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll-to-explore indicator -->
+    <div class="absolute bottom-6 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 pointer-events-none">
+      <span class="mono-data text-outline uppercase tracking-[0.25em] text-[10px]">Scroll to Explore</span>
+      <div
+        class="w-6 h-10 border-2 border-outline rounded-full flex items-start justify-center p-1.5 hover:border-brand-orange transition-colors"
+        style="border-radius: 9999px;"
+      >
+        <div
+          class="w-1 h-2 bg-brand-orange rounded-full animate-bounce-slow"
+          style="border-radius: 9999px;"
+        ></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== PARTNER MARQUEE STRIP ==================== -->
+  <section class="bg-chrome-surface border-b border-chrome-border relative overflow-hidden">
+    <div class="max-w-[1600px] mx-auto px-6 md:px-10 py-10 flex flex-col md:flex-row items-center gap-8">
+      <div class="flex items-center gap-3 shrink-0" data-reveal="left">
+        <span class="status-dot-cyan"></span>
+        <div class="flex flex-col">
+          <span class="label-caps text-brand-cyan tracking-[0.25em]">Certified Integrations</span>
+          <span class="mono-data text-slate-500 text-xs mt-0.5">Authorized OEM Partners</span>
+        </div>
+      </div>
+      <div class="h-px md:h-16 w-full md:w-px bg-chrome-border"></div>
+      <div class="flex-1 marquee w-full" data-reveal="right">
+        <div class="marquee-track animate-marquee gap-6 py-2">
+          {partnerTrack.map(p => (
+            <div class="logo-plate h-14 px-6 shrink-0" title={p.name}>
+              <img src={p.logo} alt={p.name} loading="lazy" class="h-8 w-auto" />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== INTRO / CAPABILITIES (LIGHT) ============= -->
+  <section class="section-light bg-background border-b border-surface-variant relative overflow-hidden">
+    <div class="glow-orb glow-orb--orange w-[500px] h-[500px] -top-40 left-1/4"></div>
+    <div class="max-w-[1600px] mx-auto px-6 md:px-10 py-16 md:py-20 grid grid-cols-1 md:grid-cols-12 gap-10 items-start relative z-10">
+      <div class="md:col-span-5" data-reveal="left">
+        <div class="accent-line mb-5"></div>
+        <div class="label-caps text-brand-orange mb-3">// Operating Principle</div>
+        <h2 class="font-sans font-bold text-[24px] md:text-[32px] text-on-surface uppercase tracking-tight leading-tight">
+          Transforming Industrial Operations.
+        </h2>
+        <p class="font-sans text-body-md md:text-body-lg text-on-surface-variant mt-6 text-pretty">
+          CorobotX bridges heavy industry and high-intelligence computing. We turn traditional
+          manufacturing and facility management into seamless, data-driven, highly automated ecosystems —
+          optimizing performance, reducing downtime and maximizing operational efficiency.
+        </p>
+        <a href="/about" class="btn-outline mt-8">Our Methodology</a>
+      </div>
+
+      <div class="md:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-3" data-stagger>
+        {capabilities.map(c => (
+          <div
+            class="group relative p-6 bg-surface-container border border-surface-variant hover:border-brand-orange/50 hover:bg-surface-container-high transition-all duration-300 cursor-default overflow-hidden hover-underline"
+            data-reveal
+          >
+            <div class="flex items-start gap-4">
+              <div class="icon-chip shrink-0">
+                <span class="material-symbols-outlined text-2xl">{c.icon}</span>
+              </div>
+              <div class="min-w-0">
+                <div class="font-sans font-bold text-on-surface group-hover:text-brand-orange transition-colors">
+                  {c.label}
+                </div>
+                <div class="mono-data text-on-surface-variant mt-1">{c.detail}</div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== METRICS STRIP (count-up) ================= -->
+  <section class="bg-surface border-b border-surface-variant relative overflow-hidden">
+    <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-brand-orange/60 to-transparent"></div>
+    <div class="max-w-[1600px] mx-auto px-6 md:px-10 py-10 md:py-12 grid grid-cols-2 md:grid-cols-4 gap-0" data-stagger>
+      {metrics.map((m, i) => (
+        <div
+          class="group p-5 md:px-7 md:py-4 border-r last:border-r-0 border-surface-variant md:border-r md:even:border-r-0 hover:bg-surface-container/40 transition-colors cursor-default hover-underline relative"
+          data-reveal
+        >
+          <div class="flex items-baseline">
+            <span
+              class="font-sans font-black text-[32px] md:text-[44px] text-brand-orange leading-none tracking-tight group-hover:text-gradient-orange transition-all"
+              data-count-up={m.value}
+              data-count-suffix={m.suffix}
+              data-count-duration="1600"
+            >0{m.suffix}</span>
+          </div>
+          <div class="label-caps text-on-surface mt-3 group-hover:text-brand-orange transition-colors">
+            {m.label}
+          </div>
+          <div class="font-sans text-xs text-on-surface-variant mt-2 max-w-[16rem]">{m.detail}</div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ======================== CORE SOLUTIONS BENTO =================== -->
+  <section class="bg-background industrial-grid relative overflow-hidden" id="solutions">
+    <div class="glow-orb glow-orb--orange w-[500px] h-[500px] top-1/2 right-0"></div>
+    <div class="glow-orb glow-orb--cyan w-[400px] h-[400px] bottom-0 left-1/4"></div>
+
+    <div class="max-w-[1600px] mx-auto px-6 md:px-10 py-16 md:py-24 relative z-10">
+      <SectionHeader
+        eyebrow="Core Framework"
+        title="Solutions Engineered for Continuous Duty."
+        subtitle="Four integrated pillars, one unified control layer. Built for high-density operations in hostile environments."
+      />
+
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-4" data-stagger>
+        {solutionCards.map(card => (
+          <a
+            href={card.href}
+            class:list={[
+              'col-span-1 md:col-span-12 group relative overflow-hidden bg-surface-container border transition-all duration-300 corner-brackets hover-underline',
+              card.span,
+              card.accent === 'orange'
+                ? 'border-surface-variant hover:border-brand-orange hover:bg-surface-container-high'
+                : 'border-surface-variant hover:border-brand-cyan hover:bg-surface-container-high',
+            ]}
+            data-reveal
+          >
+            <!-- Top accent bar -->
+            <div class="absolute top-0 left-0 right-0 h-0.5 bg-surface-variant">
+              <div
+                class:list={[
+                  'h-full transition-all duration-700 ease-out',
+                  card.accent === 'orange' ? 'bg-brand-orange' : 'bg-brand-cyan',
+                  'w-1/4 group-hover:w-full',
+                ]}
+              ></div>
+            </div>
+
+            <div class="p-8 md:p-10 flex flex-col h-full gap-6 min-h-[300px]">
+              <div class="flex items-start justify-between gap-4">
+                <div class="flex items-center gap-4">
+                  <div class={`icon-chip icon-chip-lg ${card.accent === 'cyan' ? 'icon-chip--cyan' : ''}`}>
+                    <span class="material-symbols-outlined text-3xl">{card.icon}</span>
+                  </div>
+                  <h3 class="font-sans font-bold text-h3 md:text-[24px] text-on-surface group-hover:text-brand-orange transition-colors">
+                    {card.title}
+                  </h3>
+                </div>
+              </div>
+
+              <p class="font-sans text-body-md text-on-surface-variant max-w-2xl">
+                {card.description}
+              </p>
+
+              <div class="flex flex-wrap gap-2 mt-auto pt-4">
+                {card.tags.map(tag => (
+                  <span
+                    class:list={[
+                      'mono-data px-3 py-1.5 border bg-surface transition-colors',
+                      card.accent === 'orange'
+                        ? 'border-brand-orange/30 text-brand-orange group-hover:border-brand-orange group-hover:bg-brand-orange/10'
+                        : 'border-brand-cyan/30 text-brand-cyan group-hover:border-brand-cyan group-hover:bg-brand-cyan/10',
+                    ]}
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              <div class="flex items-center justify-between pt-2">
+                <div class="link-arrow opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <span>View Module</span>
+                  <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== PARTNERS + INDUSTRIES (LIGHT) =============== -->
+  <section class="section-light bg-background border-y border-surface-variant relative overflow-hidden">
+    <div class="max-w-[1600px] mx-auto px-6 md:px-10 py-16 md:py-20 grid grid-cols-1 md:grid-cols-12 gap-10">
+      <div class="md:col-span-5" data-reveal="left">
+        <div class="accent-line mb-6"></div>
+        <div class="label-caps text-brand-orange mb-3">// Strategic Partners</div>
+        <h3 class="font-sans font-bold text-h2 text-on-surface uppercase tracking-tight leading-tight">
+          World-Class Hardware.<br />
+          <span class="text-gradient-orange">Proprietary Intelligence.</span>
+        </h3>
+        <p class="font-sans text-body-md text-on-surface-variant mt-5">
+          We integrate proven industrial chassis with our in-house control layer — delivering
+          unmatched cycle-time performance, uptime, and serviceability.
+        </p>
+
+        <div class="flex flex-col gap-3 mt-8" data-stagger>
+          {[
+            { name: 'Shibaura Machine', logo: '/images/partners/shibaura.jpg', tag: 'Industrial Robotics · SCARA / 6-Axis' },
+            { name: 'OTC DAIHEN', logo: '/images/partners/otc-daihen.png', tag: 'Welding Systems · Arc & Laser' },
+          ].map(p => (
+            <div
+              class="group bg-surface-container border border-outline-variant p-4 flex items-center gap-5 hover:border-brand-orange transition-all duration-300 corner-brackets cursor-default"
+              data-reveal
+            >
+              <div class="logo-plate h-16 w-28 shrink-0">
+                <img src={p.logo} alt={p.name} loading="lazy" class="h-10 w-auto" />
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="font-sans font-bold text-h3 text-on-surface truncate group-hover:text-brand-orange transition-colors">
+                  {p.name}
+                </div>
+                <div class="mono-data text-on-surface-variant mt-1 truncate">{p.tag}</div>
+              </div>
+              <span class="material-symbols-outlined text-brand-cyan shrink-0 group-hover:rotate-12 transition-transform">
+                verified
+              </span>
+            </div>
+          ))}
+        </div>
+
+        <a href="/partners" class="btn-outline mt-8">Explore Partnerships</a>
+      </div>
+
+      <div class="md:col-span-7" id="industries" data-reveal="right">
+        <div class="accent-line mb-6"></div>
+        <div class="label-caps text-brand-orange mb-3">// Industries Served</div>
+        <h3 class="font-sans font-bold text-h2 text-on-surface uppercase tracking-tight leading-tight">
+          Deployed Across Critical Sectors.
+        </h3>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-8" data-stagger>
+          {industries.map((ind, i) => (
+            <div
+              class="group bg-surface-container px-5 py-4 border-l-2 border-brand-orange/40 hover:border-brand-orange hover:bg-surface-container-high transition-all duration-300 flex items-center justify-between cursor-default hover-underline"
+              data-reveal
+            >
+              <div class="flex items-center gap-3 min-w-0">
+                <span class="w-1.5 h-1.5 bg-brand-orange rounded-full shrink-0 group-hover:scale-150 transition-transform"></span>
+                <span class="mono-data text-on-surface truncate group-hover:text-brand-orange transition-colors">
+                  {ind}
+                </span>
+              </div>
+              <span class="mono-data text-outline group-hover:text-brand-orange transition-colors shrink-0">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================ CTA ============================ -->
+  <section class="bg-background relative overflow-hidden">
+    <div class="glow-orb glow-orb--orange w-[600px] h-[600px] top-0 left-1/2 -translate-x-1/2"></div>
+    <div class="max-w-[1600px] mx-auto px-6 md:px-10 py-16 md:py-24 relative z-10">
+      <div
+        class="relative border border-brand-orange bg-surface-container-lowest p-8 md:p-12 overflow-hidden corner-ticks rounded-lg"
+        data-reveal="scale"
+      >
+        <div class="absolute inset-0 industrial-grid-dense opacity-60 pointer-events-none"></div>
+        <div class="scan-sweep"></div>
+        <div class="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+          <div class="max-w-2xl">
+            <div class="label-caps text-brand-orange mb-3">// Initiate Connection</div>
+            <h2
+              class="font-sans font-black text-[28px] md:text-[40px] leading-[1.1] tracking-tight text-on-surface uppercase text-balance"
+            >
+              Ready to <span class="text-gradient-orange">Automate</span> Your Operation?
+            </h2>
+            <p class="font-sans text-body-md text-on-surface-variant mt-4 text-pretty">
+              Book a discovery call with our engineering team. We translate operational bottlenecks into
+              streamlined, energy-optimized robotic solutions.
+            </p>
+          </div>
+          <div class="flex flex-col gap-3 shrink-0">
+            <a href="/about#contact" class="btn-primary">
+              Request a Quote
+              <span class="material-symbols-outlined text-base">send</span>
+            </a>
+            <a href="mailto:info@corobotx.com" class="mono-data text-outline hover:text-brand-orange transition-colors text-center">
+              info@corobotx.com
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
