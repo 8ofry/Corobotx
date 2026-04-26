@@ -2,7 +2,7 @@
 
 import { useFrame } from "@react-three/fiber";
 import { useGLTF, Text, Sparkles } from "@react-three/drei";
-import { useMemo, useRef } from "react";
+import { useMemo, useRef, Suspense } from "react";
 import * as THREE from "three";
 
 // Pivot points (millimeters, world space) where each joint rotates.
@@ -117,27 +117,31 @@ export default function Robot3D({ anglesRef }: Props) {
               <M i={2} />
               <M i={8} />
               {/* Logo on the right side of the arm */}
-              <Text 
-                position={[170, 105, 750]} 
-                rotation={[0, Math.PI / 2, -Math.PI / 2]}
-                fontSize={45}
-                color="#0084FF"
-                fontWeight="bold"
-                letterSpacing={0.05}
-              >
-                Corobotx
-              </Text>
+              <Suspense fallback={null}>
+                <Text 
+                  position={[115, -115, 400]} 
+                  rotation={[0, Math.PI / 2, -Math.PI / 2]}
+                  fontSize={45}
+                  color="#0084FF"
+                  fontWeight="bold"
+                  letterSpacing={0.05}
+                >
+                  Corobotx
+                </Text>
+              </Suspense>
               {/* Logo on the left side of the arm */}
-              <Text 
-                position={[170, -105, 750]} 
-                rotation={[0, -Math.PI / 2, Math.PI / 2]}
-                fontSize={45}
-                color="#0084FF"
-                fontWeight="bold"
-                letterSpacing={0.05}
-              >
-                Corobotx
-              </Text>
+              <Suspense fallback={null}>
+                <Text 
+                  position={[-115, -115, 400]} 
+                  rotation={[0, -Math.PI / 2, Math.PI / 2]}
+                  fontSize={45}
+                  color="#0084FF"
+                  fontWeight="bold"
+                  letterSpacing={0.05}
+                >
+                  Corobotx
+                </Text>
+              </Suspense>
               <group position={J3_PIVOT}>
                 <group ref={j3}>
                   <group position={neg(J3_PIVOT)}>
