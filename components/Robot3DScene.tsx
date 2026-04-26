@@ -4,6 +4,7 @@ import { Canvas } from "@react-three/fiber";
 import { Suspense, useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Environment, ContactShadows, Sparkles } from "@react-three/drei";
 import Robot3D, { type JointAngles } from "./Robot3D";
 
 if (typeof window !== "undefined") {
@@ -172,7 +173,7 @@ export default function Robot3DScene() {
         dpr={[1, 2]}
         gl={{ antialias: true, alpha: true }}
       >
-        <ambientLight intensity={0.55} />
+        <ambientLight intensity={0.2} />
         {/* Key light from the upper-front-right (warm steel) */}
         <directionalLight
           position={[2500, -2000, 3000]}
@@ -192,15 +193,25 @@ export default function Robot3DScene() {
         {/* Rim from behind, brighter brand glow */}
         <directionalLight position={[-500, 2500, 1000]} intensity={0.55} color="#5D87A1" />
 
+        <Environment preset="warehouse" environmentIntensity={0.8} />
+
+        {/* Ambient floating dust particles */}
+        <Sparkles count={400} scale={12000} size={15} speed={0.2} opacity={0.3} color="#88ccff" />
+
         <Suspense fallback={null}>
           <Robot3D anglesRef={anglesRef} />
         </Suspense>
 
-        {/* Ground shadow disc */}
-        <mesh position={[300, 0, -1]} receiveShadow>
-          <circleGeometry args={[1100, 48]} />
-          <shadowMaterial opacity={0.45} color="#000" />
-        </mesh>
+        {/* Realistic ground shadow */}
+        <ContactShadows 
+          position={[300, -10, 0]} 
+          opacity={0.8} 
+          scale={3000} 
+          blur={2.5} 
+          far={1000} 
+          resolution={512}
+          color="#000000" 
+        />
       </Canvas>
     </div>
   );

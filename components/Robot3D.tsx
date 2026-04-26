@@ -1,7 +1,7 @@
 "use client";
 
 import { useFrame } from "@react-three/fiber";
-import { useGLTF, Html } from "@react-three/drei";
+import { useGLTF, Html, Sparkles } from "@react-three/drei";
 import { useMemo, useRef } from "react";
 import * as THREE from "three";
 
@@ -53,12 +53,17 @@ export default function Robot3D({ anglesRef }: Props) {
       return na - nb;
     });
 
-    // Apply toon material to each mesh
-    const gradientMap = makeToonGradient();
+    // Apply realistic physical material
     arr.forEach((mesh) => {
       const orig = mesh.material as THREE.MeshStandardMaterial;
       const color = orig?.color ? orig.color.clone() : new THREE.Color("#f2d07a");
-      mesh.material = new THREE.MeshToonMaterial({ color, gradientMap });
+      mesh.material = new THREE.MeshPhysicalMaterial({ 
+        color, 
+        metalness: 0.6, 
+        roughness: 0.2, 
+        clearcoat: 0.5, 
+        clearcoatRoughness: 0.2
+      });
       mesh.castShadow = true;
       mesh.receiveShadow = true;
     });
@@ -132,6 +137,11 @@ export default function Robot3D({ anglesRef }: Props) {
                                   <group ref={j6}>
                                     <group position={neg(J6_PIVOT)}>
                                       <M i={6} />
+                                      {/* Magic / Sparks at the tip */}
+                                      <group position={[900, 0, 1147]}>
+                                        <Sparkles count={150} scale={150} size={15} speed={0.4} opacity={1} color="#ffaa00" />
+                                        <Sparkles count={50} scale={80} size={25} speed={0.8} opacity={1} color="#ffffff" />
+                                      </group>
                                     </group>
                                   </group>
                                 </group>
@@ -153,14 +163,3 @@ export default function Robot3D({ anglesRef }: Props) {
 }
 
 useGLTF.preload("/FD-B6/FD-B6.gltf");
-
-function makeToonGradient(): THREE.Texture {
-  // 3-step cel gradient (dark/mid/bright)
-  const data = new Uint8Array([80, 80, 80, 255, 170, 170, 170, 255, 245, 245, 245, 255]);
-  const tex = new THREE.DataTexture(data, 3, 1, THREE.RGBAFormat);
-  tex.magFilter = THREE.NearestFilter;
-  tex.minFilter = THREE.NearestFilter;
-  tex.generateMipmaps = false;
-  tex.needsUpdate = true;
-  return tex;
-}
