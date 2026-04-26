@@ -1,4 +1,5 @@
-import Robot3DScene from "@/components/Robot3DScene";
+import dynamic from "next/dynamic";
+const Robot3DScene = dynamic(() => import("@/components/Robot3DScene"), { ssr: false });
 import Header from "@/components/Header";
 import Hero from "@/components/sections/Hero";
 import Methodology from "@/components/sections/Methodology";

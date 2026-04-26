@@ -22,6 +22,9 @@ export default function Robot3DScene() {
     j4: 0,
     j5: 0,
     j6: 0,
+    baseX: 0,
+    baseY: 0,
+    baseZ: 0,
   });
 
   useEffect(() => {
