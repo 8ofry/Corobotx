@@ -111,37 +111,37 @@ export default function Robot3D({ anglesRef }: Props) {
       <M i={0} />
       <group ref={j1}>
         <M i={1} />
+        {/* Logo on the right side of the shoulder */}
+        <Suspense fallback={null}>
+          <Text 
+            position={[70, 183.5, 230]} 
+            rotation={[Math.PI / 2, Math.PI, -1.0]}
+            fontSize={35}
+            color="#111111"
+            fontWeight="bold"
+            letterSpacing={0.05}
+          >
+            Corobotx
+          </Text>
+        </Suspense>
+        {/* Logo on the left side of the shoulder */}
+        <Suspense fallback={null}>
+          <Text 
+            position={[70, -183.5, 230]} 
+            rotation={[Math.PI / 2, 0, 1.0]}
+            fontSize={35}
+            color="#111111"
+            fontWeight="bold"
+            letterSpacing={0.05}
+          >
+            Corobotx
+          </Text>
+        </Suspense>
         <group position={J2_PIVOT}>
           <group ref={j2}>
             <group position={neg(J2_PIVOT)}>
               <M i={2} />
               <M i={8} />
-              {/* Logo on the right side of the arm */}
-              <Suspense fallback={null}>
-                <Text 
-                  position={[115, -115, 400]} 
-                  rotation={[0, Math.PI / 2, -Math.PI / 2]}
-                  fontSize={45}
-                  color="#0084FF"
-                  fontWeight="bold"
-                  letterSpacing={0.05}
-                >
-                  Corobotx
-                </Text>
-              </Suspense>
-              {/* Logo on the left side of the arm */}
-              <Suspense fallback={null}>
-                <Text 
-                  position={[-115, -115, 400]} 
-                  rotation={[0, -Math.PI / 2, Math.PI / 2]}
-                  fontSize={45}
-                  color="#0084FF"
-                  fontWeight="bold"
-                  letterSpacing={0.05}
-                >
-                  Corobotx
-                </Text>
-              </Suspense>
               <group position={J3_PIVOT}>
                 <group ref={j3}>
                   <group position={neg(J3_PIVOT)}>
