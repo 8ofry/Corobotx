@@ -16,16 +16,14 @@ export default function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 h-20 bg-bg/85 backdrop-blur-md border-b border-border/60">
       <div className="mx-auto flex h-full max-w-[1400px] items-center px-6 md:px-10">
         <Link href="#hero" className="flex items-center gap-3">
-          <div 
-            className="text-[28px] md:text-[32px] font-black tracking-widest" 
-            style={{ 
-              background: "linear-gradient(to right, #0084FF, #0022A1)", 
-              WebkitBackgroundClip: "text", 
-              WebkitTextFillColor: "transparent",
-              fontFamily: "system-ui, sans-serif"
-            }}>
-            Corobotx
-          </div>
+          <Image
+            src="/images/brand/logo_white.png"
+            alt="Corobotx"
+            width={180}
+            height={36}
+            priority
+            className="h-8 w-auto md:h-9"
+          />
         </Link>
 
         <nav className="ml-auto hidden items-center gap-1 lg:flex">
