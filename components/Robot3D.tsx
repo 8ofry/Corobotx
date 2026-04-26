@@ -1,7 +1,7 @@
 "use client";
 
 import { useFrame } from "@react-three/fiber";
-import { useGLTF, Html, Sparkles } from "@react-three/drei";
+import { useGLTF, Text, Sparkles } from "@react-three/drei";
 import { useMemo, useRef } from "react";
 import * as THREE from "three";
 
@@ -117,31 +117,27 @@ export default function Robot3D({ anglesRef }: Props) {
               <M i={2} />
               <M i={8} />
               {/* Logo on the right side of the arm */}
-              <Html transform position={[170, 105, 750]} rotation={[0, Math.PI / 2, -Math.PI / 2]}>
-                <div 
-                  className="text-6xl font-black tracking-widest" 
-                  style={{ 
-                    background: "linear-gradient(to right, #0084FF, #0022A1)", 
-                    WebkitBackgroundClip: "text", 
-                    WebkitTextFillColor: "transparent",
-                    fontFamily: "sans-serif"
-                  }}>
-                  Corobotx
-                </div>
-              </Html>
+              <Text 
+                position={[170, 105, 750]} 
+                rotation={[0, Math.PI / 2, -Math.PI / 2]}
+                fontSize={45}
+                color="#0084FF"
+                fontWeight="bold"
+                letterSpacing={0.05}
+              >
+                Corobotx
+              </Text>
               {/* Logo on the left side of the arm */}
-              <Html transform position={[170, -105, 750]} rotation={[0, -Math.PI / 2, Math.PI / 2]}>
-                <div 
-                  className="text-6xl font-black tracking-widest" 
-                  style={{ 
-                    background: "linear-gradient(to left, #0084FF, #0022A1)", 
-                    WebkitBackgroundClip: "text", 
-                    WebkitTextFillColor: "transparent",
-                    fontFamily: "sans-serif"
-                  }}>
-                  Corobotx
-                </div>
-              </Html>
+              <Text 
+                position={[170, -105, 750]} 
+                rotation={[0, -Math.PI / 2, Math.PI / 2]}
+                fontSize={45}
+                color="#0084FF"
+                fontWeight="bold"
+                letterSpacing={0.05}
+              >
+                Corobotx
+              </Text>
               <group position={J3_PIVOT}>
                 <group ref={j3}>
                   <group position={neg(J3_PIVOT)}>
