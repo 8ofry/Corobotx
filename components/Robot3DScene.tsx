@@ -154,7 +154,7 @@ export default function Robot3DScene() {
     <div
       ref={containerRef}
       aria-hidden
-      className="pointer-events-none fixed inset-0 z-10 hidden md:block"
+      className="pointer-events-none fixed inset-0 z-10"
     >
       <Canvas
         shadows
@@ -196,7 +196,9 @@ export default function Robot3DScene() {
         {/* Rim from behind, brighter brand glow */}
         <directionalLight position={[-500, 2500, 1000]} intensity={0.55} color="#5D87A1" />
 
-        <Environment preset="warehouse" environmentIntensity={0.8} />
+        <Suspense fallback={null}>
+          <Environment preset="warehouse" environmentIntensity={0.8} />
+        </Suspense>
 
         {/* Ambient floating dust particles */}
         <Sparkles count={400} scale={12000} size={15} speed={0.2} opacity={0.3} color="#88ccff" />
