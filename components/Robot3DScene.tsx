@@ -25,6 +25,7 @@ export default function Robot3DScene() {
     baseX: 0,
     baseY: 0,
     baseZ: 0,
+    sparksOpacity: 0,
   });
 
   useEffect(() => {
@@ -50,6 +51,7 @@ export default function Robot3DScene() {
       baseX: 0,
       baseY: 0,
       baseZ: 0,
+      sparksOpacity: 0,
     });
 
     const tl = gsap.timeline({
@@ -72,6 +74,7 @@ export default function Robot3DScene() {
       j3: 40 * DEG,
       j5: -5 * DEG,
       baseX: -1200,     // Move to the left side of the screen
+      sparksOpacity: 0, // Still mostly folded
       ease: "power2.inOut",
     }, 0);
 
@@ -81,6 +84,7 @@ export default function Robot3DScene() {
       j2: 25 * DEG,     // Lean forward towards text
       j3: 5 * DEG,      // Unfold upper arm
       j5: -45 * DEG,    // Point wrist towards text
+      sparksOpacity: 0.5, // Starts expanding
       ease: "power1.inOut",
     }, 1);
 
@@ -92,6 +96,7 @@ export default function Robot3DScene() {
       j4: 30 * DEG,     // Twist wrist slightly
       j5: -60 * DEG,    // Point down at the cards
       baseX: -1200,     // Stay on the left!
+      sparksOpacity: 1, // Fully expanded!
       ease: "power2.inOut",
     }, 2);
 
@@ -104,6 +109,7 @@ export default function Robot3DScene() {
       j5: 30 * DEG,
       j6: 90 * DEG,
       baseX: 1200,      // Move to far right ("rare right")
+      sparksOpacity: 0, // Curled back up
       ease: "power3.inOut",
     }, 3);
 
@@ -114,6 +120,7 @@ export default function Robot3DScene() {
       j3: 5 * DEG,      // Unfold upper arm
       j4: 30 * DEG,
       j5: -30 * DEG,    // Point wrist at logos
+      sparksOpacity: 0.5, // Expanding again
       ease: "power2.inOut",
     }, 4);
 
@@ -126,6 +133,7 @@ export default function Robot3DScene() {
       j5: 30 * DEG,
       j6: 120 * DEG,
       baseX: 0,         // Move back to center right
+      sparksOpacity: 0, // Retracted
       ease: "power2.inOut",
     }, 5);
 
@@ -137,6 +145,7 @@ export default function Robot3DScene() {
       j4: 90 * DEG,
       j5: -20 * DEG,
       j6: 180 * DEG,
+      sparksOpacity: 1, // Full reach
       ease: "power2.inOut",
     }, 6);
 

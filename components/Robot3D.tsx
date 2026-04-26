@@ -25,6 +25,7 @@ export type JointAngles = {
   baseX?: number;
   baseY?: number;
   baseZ?: number;
+  sparksOpacity?: number;
 };
 
 type Props = {
@@ -78,6 +79,7 @@ export default function Robot3D({ anglesRef }: Props) {
   const j4 = useRef<THREE.Group>(null!);
   const j5 = useRef<THREE.Group>(null!);
   const j6 = useRef<THREE.Group>(null!);
+  const sparksGroupRef = useRef<THREE.Group>(null!);
 
   useFrame(() => {
     const a = anglesRef.current;
@@ -92,6 +94,12 @@ export default function Robot3D({ anglesRef }: Props) {
     if (j4.current) j4.current.rotation.x = a.j4;
     if (j5.current) j5.current.rotation.y = a.j5;
     if (j6.current) j6.current.rotation.x = a.j6;
+    
+    if (sparksGroupRef.current) {
+      const opacity = a.sparksOpacity ?? 0;
+      sparksGroupRef.current.scale.setScalar(opacity);
+      sparksGroupRef.current.visible = opacity > 0.01;
+    }
   });
 
   if (meshes.length < 9) return null;
@@ -110,14 +118,28 @@ export default function Robot3D({ anglesRef }: Props) {
               <M i={8} />
               {/* Logo on the right side of the arm */}
               <Html transform position={[170, 105, 750]} rotation={[0, Math.PI / 2, -Math.PI / 2]}>
-                <div className="text-6xl font-bold tracking-wider" style={{ color: "#1a365d" }}>
-                  CorobotX
+                <div 
+                  className="text-6xl font-black tracking-widest" 
+                  style={{ 
+                    background: "linear-gradient(to right, #0084FF, #0022A1)", 
+                    WebkitBackgroundClip: "text", 
+                    WebkitTextFillColor: "transparent",
+                    fontFamily: "sans-serif"
+                  }}>
+                  Corobotx
                 </div>
               </Html>
               {/* Logo on the left side of the arm */}
               <Html transform position={[170, -105, 750]} rotation={[0, -Math.PI / 2, Math.PI / 2]}>
-                <div className="text-6xl font-bold tracking-wider" style={{ color: "#1a365d" }}>
-                  CorobotX
+                <div 
+                  className="text-6xl font-black tracking-widest" 
+                  style={{ 
+                    background: "linear-gradient(to left, #0084FF, #0022A1)", 
+                    WebkitBackgroundClip: "text", 
+                    WebkitTextFillColor: "transparent",
+                    fontFamily: "sans-serif"
+                  }}>
+                  Corobotx
                 </div>
               </Html>
               <group position={J3_PIVOT}>
@@ -138,7 +160,7 @@ export default function Robot3D({ anglesRef }: Props) {
                                     <group position={neg(J6_PIVOT)}>
                                       <M i={6} />
                                       {/* Magic / Sparks at the tip */}
-                                      <group position={[900, 0, 1147]}>
+                                      <group position={[900, 0, 1147]} ref={sparksGroupRef}>
                                         <Sparkles count={150} scale={150} size={15} speed={0.4} opacity={1} color="#ffaa00" />
                                         <Sparkles count={50} scale={80} size={25} speed={0.8} opacity={1} color="#ffffff" />
                                       </group>
