@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://corobotx.com/sitemap-index.xml

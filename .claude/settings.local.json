@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm --version)",
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(timeout 60 bash -c 'until curl -sf http://localhost:62461 -o /dev/null 2>&1; do sleep 2; done && echo \"READY\"')",
+      "Bash(curl -sS -m 90 -o /tmp/page.html -w \"HTTP:%{http_code} TIME:%{time_total}\\\\n\" http://localhost:62461)",
+      "Bash(npm view *)",
+      "Bash(node -e \"console.log\\(require\\('./node_modules/next/package.json'\\).version\\)\")",
+      "Bash(curl -sf -m 5 http://localhost:62492 -o /dev/null)",
+      "Bash(taskkill //PID 9804 //F)",
+      "Bash(curl -sf -m 10 http://localhost:62492 -o /tmp/page.html)",
+      "Bash(curl -sf -m 10 http://localhost:62492)",
+      "Bash(curl -sf http://localhost:62492 -o /dev/null)",
+      "Bash(node -e ' *)",
+      "Bash(curl -sf -m 5 http://localhost:62492)"
+    ]
+  }
+}

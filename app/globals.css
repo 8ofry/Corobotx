@@ -1,0 +1,148 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --c-bg: 3 25 48;
+  --c-surface: 4 37 68;
+  --c-surface-2: 7 39 79;
+  --c-border: 14 83 132;
+  --c-on: 220 235 245;
+}
+
+html,
+body {
+  background: rgb(var(--c-bg));
+  color: rgb(var(--c-on));
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-feature-settings: "ss01", "cv11";
+}
+
+/* Subtle blueprint grid */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(50, 125, 165, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(50, 125, 165, 0.06) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+}
+
+/* Soft "spotlight" radial glow used behind hero/CTA */
+.glow-orb {
+  position: absolute;
+  border-radius: 9999px;
+  background: radial-gradient(
+    closest-side,
+    rgba(50, 125, 165, 0.55),
+    rgba(14, 83, 132, 0.25) 45%,
+    transparent 70%
+  );
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+/* Buttons */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(180deg, #327DA5, #0E5384);
+  color: #fff;
+  padding: 0.875rem 1.5rem;
+  border-radius: 4px;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+  border: 1px solid rgba(180, 207, 224, 0.35);
+  box-shadow:
+    0 0 0 1px rgba(50, 125, 165, 0.4) inset,
+    0 12px 40px -10px rgba(50, 125, 165, 0.55);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 0 0 1px rgba(180, 207, 224, 0.6) inset,
+    0 18px 50px -10px rgba(50, 125, 165, 0.7);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(7, 39, 79, 0.6);
+  color: rgb(var(--c-on));
+  padding: 0.875rem 1.5rem;
+  border-radius: 4px;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+  border: 1px solid rgba(50, 125, 165, 0.5);
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+.btn-outline:hover {
+  background: rgba(14, 83, 132, 0.4);
+  border-color: rgba(180, 207, 224, 0.6);
+}
+
+/* Eyebrow tag */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: ui-monospace, monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #5D87A1;
+}
+.eyebrow::before {
+  content: "//";
+  color: #327DA5;
+}
+
+/* Number index plate */
+.index-plate {
+  font-family: ui-monospace, monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: #5D87A1;
+}
+
+/* Card surface */
+.card {
+  background: linear-gradient(180deg, rgba(7, 39, 79, 0.6), rgba(4, 37, 68, 0.4));
+  border: 1px solid rgba(14, 83, 132, 0.5);
+  border-radius: 4px;
+  backdrop-filter: blur(8px);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.card:hover {
+  border-color: rgba(50, 125, 165, 0.85);
+}
+
+/* Scan line decoration */
+.scan-line {
+  position: absolute;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(50, 125, 165, 0.4) 40%,
+    rgba(50, 125, 165, 0.7) 50%,
+    rgba(50, 125, 165, 0.4) 60%,
+    transparent
+  );
+  animation: scan-line-pulse 7s ease-in-out infinite;
+}
+@keyframes scan-line-pulse {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.7; }
+}
